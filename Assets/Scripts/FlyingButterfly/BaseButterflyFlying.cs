@@ -1,10 +1,15 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
+
+public class WasCaughtEventArgs : EventArgs
+{
+    public WasCaughtEventArgs(ButterflyType type)
+    {
+        this.Type = type;
+    }
+
+    public ButterflyType Type { get; private set; }
+}
 
 public class BaseButterflyFlying : MonoBehaviour
 {
@@ -13,6 +18,9 @@ public class BaseButterflyFlying : MonoBehaviour
     public ButterflyType Type { get;protected set; }
 
     private bool _isCaught;
+
+    public event EventHandler<WasCaughtEventArgs> WasCaught;
+    public event EventHandler<WasCaughtEventArgs> LeftScene;
 
 
     private void Awake()
@@ -27,6 +35,7 @@ public class BaseButterflyFlying : MonoBehaviour
             UpdateMovement();
         }
 
+
     }
 
     protected virtual void UpdateMovement()
@@ -38,5 +47,26 @@ public class BaseButterflyFlying : MonoBehaviour
     {
         StartCoroutine(Utilities.MoveToPoint(movementPosition, () => Destroy(this.gameObject), _body, movementSpeed));
         _isCaught = true;
+        OnWasCaught(new WasCaughtEventArgs(Type));
     }
+
+    public void Left()
+    {
+        OnLeft(new WasCaughtEventArgs(Type));
+        Destroy(this.gameObject);
+    }
+
+    private void OnWasCaught(WasCaughtEventArgs eventArgs)
+    {
+        var handler = WasCaught;
+        handler?.Invoke(this, eventArgs);
+    }
+
+    private void OnLeft(WasCaughtEventArgs eventArgs)
+    {
+        var handler = LeftScene;
+        handler?.Invoke(this, eventArgs);
+    }
+
+
 }
