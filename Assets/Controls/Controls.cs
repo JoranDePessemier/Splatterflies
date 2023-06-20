@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeScenePressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""320d8a21-48c6-4940-83be-d2dc515e376e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +137,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""MouseSpeed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcf37ecf-57b2-49b1-813b-55828d901728"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeScenePressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +161,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_PlayerInput_ActionReleased = m_PlayerInput.FindAction("ActionReleased", throwIfNotFound: true);
         m_PlayerInput_MousePosition = m_PlayerInput.FindAction("MousePosition", throwIfNotFound: true);
         m_PlayerInput_MouseSpeed = m_PlayerInput.FindAction("MouseSpeed", throwIfNotFound: true);
+        m_PlayerInput_ChangeScenePressed = m_PlayerInput.FindAction("ChangeScenePressed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_ActionReleased;
     private readonly InputAction m_PlayerInput_MousePosition;
     private readonly InputAction m_PlayerInput_MouseSpeed;
+    private readonly InputAction m_PlayerInput_ChangeScenePressed;
     public struct PlayerInputActions
     {
         private @Controls m_Wrapper;
@@ -214,6 +236,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @ActionReleased => m_Wrapper.m_PlayerInput_ActionReleased;
         public InputAction @MousePosition => m_Wrapper.m_PlayerInput_MousePosition;
         public InputAction @MouseSpeed => m_Wrapper.m_PlayerInput_MouseSpeed;
+        public InputAction @ChangeScenePressed => m_Wrapper.m_PlayerInput_ChangeScenePressed;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +261,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MouseSpeed.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSpeed;
                 @MouseSpeed.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSpeed;
                 @MouseSpeed.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSpeed;
+                @ChangeScenePressed.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnChangeScenePressed;
+                @ChangeScenePressed.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnChangeScenePressed;
+                @ChangeScenePressed.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnChangeScenePressed;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -257,6 +283,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MouseSpeed.started += instance.OnMouseSpeed;
                 @MouseSpeed.performed += instance.OnMouseSpeed;
                 @MouseSpeed.canceled += instance.OnMouseSpeed;
+                @ChangeScenePressed.started += instance.OnChangeScenePressed;
+                @ChangeScenePressed.performed += instance.OnChangeScenePressed;
+                @ChangeScenePressed.canceled += instance.OnChangeScenePressed;
             }
         }
     }
@@ -268,5 +297,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnActionReleased(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnMouseSpeed(InputAction.CallbackContext context);
+        void OnChangeScenePressed(InputAction.CallbackContext context);
     }
 }
