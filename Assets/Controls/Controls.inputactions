@@ -1,0 +1,114 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "PlayerInput",
+            "id": "8af49f03-ed82-4bf4-8a1c-d7e1f13db439",
+            "actions": [
+                {
+                    "name": "ActionPressed",
+                    "type": "Button",
+                    "id": "cbc85cca-108b-4b79-aeef-3a25fc8ac091",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActionHolding",
+                    "type": "Button",
+                    "id": "d356f843-756f-4301-b455-0c5cd1c7862f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActionReleased",
+                    "type": "Button",
+                    "id": "b3697cd6-4cb0-47f7-935a-3873501bfbd8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "b21647cf-c4ff-42f5-8661-fd70e0dd4e27",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseSpeed",
+                    "type": "Value",
+                    "id": "f03e42f8-3a56-4de3-b8bf-d3937fbd1c92",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "117da5c5-c41b-4e4b-9891-ebba560cfd19",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActionPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f53d5b8-1598-4b29-8b66-91f97e5b3766",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActionHolding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "498ae708-7f61-4ebb-ba90-c6bbb35538f2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActionReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "868f0d97-cc01-4126-b9b8-8e58dd5b1769",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d54502a5-a2c8-4635-863f-d98f597323b6",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
