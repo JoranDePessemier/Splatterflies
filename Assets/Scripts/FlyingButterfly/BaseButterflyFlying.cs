@@ -10,23 +10,33 @@ public class BaseButterflyFlying : MonoBehaviour
 {
     protected Rigidbody2D _body;
 
+    public ButterflyType Type { get;protected set; }
+
+    private bool _isCaught;
+
+
     private void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        UpdateMovement();
+        if(!_isCaught)
+        {
+            UpdateMovement();
+        }
+
     }
 
-    protected void UpdateMovement()
+    protected virtual void UpdateMovement()
     {
         
     }
 
     public void Caught(Vector2 movementPosition, float movementSpeed)
     {
-        StartCoroutine(Utilities.MoveToPoint(movementPosition,() => Destroy(this.gameObject),_body,movementSpeed)); 
+        StartCoroutine(Utilities.MoveToPoint(movementPosition, () => Destroy(this.gameObject), _body, movementSpeed));
+        _isCaught = true;
     }
 }
