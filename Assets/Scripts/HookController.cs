@@ -27,6 +27,9 @@ public class HookController : MonoBehaviour
     [SerializeField]
     private float _hookSpeed = 1f;
 
+    [SerializeField]
+    private LayerMask _butterflyLayerMask;
+
     private GrappleState _state = GrappleState.OnBase;
 
     private void Awake()
@@ -63,7 +66,7 @@ public class HookController : MonoBehaviour
     {
         if (_state == GrappleState.OnBase)
         {
-            StartCoroutine(MoveToPoint(_mousePosition,StartReturning));
+            StartCoroutine(Utilities.MoveToPoint(_mousePosition,StartReturning, _body, _hookSpeed));
             _state = GrappleState.Grappling;
         }
     }
@@ -71,19 +74,27 @@ public class HookController : MonoBehaviour
     private void StartReturning()
     {
         _state = GrappleState.Returning;
-        StartCoroutine(MoveToPoint(_rotatorTransform.position, () => { _state = GrappleState.OnBase; }));
+        StartCoroutine(Utilities.MoveToPoint(_rotatorTransform.position, () => { _state = GrappleState.OnBase; },_body,_hookSpeed));
 
     }
 
-    private IEnumerator MoveToPoint(Vector2 point,Action OnMoveCompleted)
-    {
-        while(_body.position != point)
-        {
-            Vector2 nextPosition = Vector2.MoveTowards(_body.position, point, _hookSpeed * Time.deltaTime);
-            _body.MovePosition(nextPosition);
-            yield return new WaitForFixedUpdate();
-        }
 
-        OnMoveCompleted();
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject collisionObject = collision.gameObject;
+
+        if (Utilities.IsInMask(collisionObject, _butterflyLayerMask))
+        {
+            if(!collisionObject.TryGetComponent<BaseButterflyFlying>(out BaseButterflyFlying butterfly))
+            {
+                Debug.LogError("A butterfly that is in the flying layer does not have the butterfly flying script, you stupid");
+            }
+
+            butterfly.Caught(_rotatorTransform.position,_hookSpeed);
+            StopAllCoroutines();
+            StartReturning();
+            
+        }
     }
 }
