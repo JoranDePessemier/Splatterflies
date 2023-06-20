@@ -16,6 +16,8 @@ public class RandomPointButterfly : BaseButterflyFlying
 
     private float _movementSpeed;
 
+    private bool _isMoving;
+
     private void Start()
     {
         _movementSpeed = Random.Range(_movementSpeedMinMax.x, _movementSpeedMinMax.y);
@@ -32,5 +34,11 @@ public class RandomPointButterfly : BaseButterflyFlying
 
     protected override void UpdateMovement()
     {
+        if(!_isMoving)
+        {
+            Vector2 randomPoint = new Vector2(Random.Range(_startPointSquare.x, _endPointSquare.x), Random.Range(_startPointSquare.y, _endPointSquare.y));
+            _isMoving = true;
+            StartCoroutine(Utilities.MoveToPoint(randomPoint,() => _isMoving = false,_body,_movementSpeed));
+        }
     }
 }
