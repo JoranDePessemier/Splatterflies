@@ -21,7 +21,7 @@ public class ButterflySpawner : MonoBehaviour
 
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
 
-    private void Awake()
+    private void Start()
     {
         foreach(BaseButterflyFlying fly in _spawnObjects)
         {

@@ -15,7 +15,11 @@ public class BaseButterflyFlying : MonoBehaviour
 {
     protected Rigidbody2D _body;
 
-    public ButterflyType Type { get;protected set; }
+    [SerializeField]
+    private ButterflyType _type;
+
+
+    public ButterflyType Type { get { return _type; } private set { _type = value; } }
 
     private bool _isCaught;
 
@@ -23,7 +27,7 @@ public class BaseButterflyFlying : MonoBehaviour
     public event EventHandler<WasCaughtEventArgs> LeftScene;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
     }

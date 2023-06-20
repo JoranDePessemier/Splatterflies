@@ -93,11 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8127661404966819173}
-  - component: {fileID: 8127661404966819169}
   - component: {fileID: 8127661404966819170}
   - component: {fileID: 8127661404966819168}
   m_Layer: 3
-  m_Name: Butterfly
+  m_Name: ButterflyFlyingBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,19 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8127661404966819169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8127661404966819172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2636b8a6a984f43874ccc1f1d96847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementSpeedMinMax: {x: 2, y: 4}
 --- !u!61 &8127661404966819170
 BoxCollider2D:
   m_ObjectHideFlags: 0
