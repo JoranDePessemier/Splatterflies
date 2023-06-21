@@ -30,6 +30,13 @@ public class HookController : MonoBehaviour
     [SerializeField]
     private LayerMask _butterflyLayerMask;
 
+    [SerializeField]
+    private LineRenderer _lineRenderer;
+
+    [SerializeField]
+    private SpriteRenderer _sprite;
+
+
     private GrappleState _state = GrappleState.OnBase;
 
     private void Awake()
@@ -62,6 +69,15 @@ public class HookController : MonoBehaviour
             _controls.Disable();
         }
 
+        if(_state == GrappleState.OnBase)
+        {
+            _sprite.enabled = false;
+        }
+        else
+        {
+            _sprite.enabled = true;
+        }
+
 
         _mousePosition = Utilities.GetMousePositionWorldSpace(_controls, _mainCam);
 
@@ -69,7 +85,10 @@ public class HookController : MonoBehaviour
         {
             _rotatorTransform.up = _mousePosition - (Vector2)_rotatorTransform.position;
         }
-        
+
+
+        _lineRenderer.SetPosition(0, _rotatorTransform.position);
+        _lineRenderer.SetPosition(1, _body.position);
     }
 
     private void StartHooking(InputAction.CallbackContext obj)
