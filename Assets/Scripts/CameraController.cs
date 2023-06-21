@@ -20,8 +20,6 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _movementTime;
 
-    private bool _isUp = true;
-
     private void Awake()
     {
         _camObject = this.gameObject;
@@ -31,13 +29,15 @@ public class CameraController : MonoBehaviour
 
     private void ChangePosition(InputAction.CallbackContext obj)
     {
-        if(_isUp)
+        if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
         {
-            LeanTween.moveLocal(_camObject,_camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => _isUp = false); 
+            GlobalVariables.Instance.ScreenState = ScreenType.Transition;
+            LeanTween.moveLocal(_camObject,_camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Bottom); 
         }
-        else 
+        else if(GlobalVariables.Instance.ScreenState == ScreenType.Bottom)
         {
-            LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => _isUp = true); 
+            GlobalVariables.Instance.ScreenState = ScreenType.Transition;
+            LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Top); 
         }
         
     }

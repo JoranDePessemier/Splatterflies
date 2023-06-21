@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 8127661404966819173}
   - component: {fileID: 8127661404966819170}
   - component: {fileID: 8127661404966819168}
+  - component: {fileID: -9148717208563685022}
   m_Layer: 3
-  m_Name: ButterflyFlyingBase
+  m_Name: ButterflyDungeonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,3 +166,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-9148717208563685022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127661404966819172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bff8f130b345c4da1ae132cec761d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _movementSpeedMinMax: {x: 1, y: 3}
+  _startPointSquare: {x: -7.2, y: -5.85}
+  _endPointSquare: {x: 7.36, y: -13.46}

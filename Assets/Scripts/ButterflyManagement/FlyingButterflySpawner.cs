@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ButterflySpawner : MonoBehaviour
+public class FlyingButterflySpawner : MonoBehaviour
 {
     [SerializeField]
     private Vector2 _startXYSpawnArea;
@@ -18,8 +18,14 @@ public class ButterflySpawner : MonoBehaviour
     [SerializeField]
     private float _amountPerButterfly = 3;
 
+    DungeonButterflySpawner _dungeonSpawner;
+
 
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
+    private void Awake()
+    {
+        _dungeonSpawner = this.GetComponent<DungeonButterflySpawner>();
+    }
 
     private void Start()
     {
@@ -42,6 +48,8 @@ public class ButterflySpawner : MonoBehaviour
         BaseButterflyFlying spawnedFly = GameObject.Instantiate(flyTransform, spawnPoint, flyTransform.rotation).GetComponent<BaseButterflyFlying>();
         spawnedFly.WasCaught += (s, e) => SpawnButterfly(e.Type);
         spawnedFly.LeftScene += (s, e) => SpawnButterfly(e.Type);
+
+        spawnedFly.WasCaught += _dungeonSpawner.SpawnButterfly;
     }
 
     private Vector2 DetermineSpawnPoint()

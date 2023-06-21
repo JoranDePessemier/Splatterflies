@@ -53,6 +53,16 @@ public class HookController : MonoBehaviour
 
     private void Update()
     {
+        if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
+        {
+            _controls.Enable();
+        }
+        else
+        {
+            _controls.Disable();
+        }
+
+
         _mousePosition = Utilities.GetMousePositionWorldSpace(_controls, _mainCam);
 
         if (_state == GrappleState.OnBase)

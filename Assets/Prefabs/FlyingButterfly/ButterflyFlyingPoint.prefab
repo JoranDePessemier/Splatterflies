@@ -8,16 +8,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1740541395, guid: 8eac0e298de2886438e3df51baae312f, type: 3}
+    - target: {fileID: 8127661404755855703, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.g
-      value: 0.03835289
+    - target: {fileID: 8127661404755855703, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.r
-      value: 0.0039215684
+    - target: {fileID: 8127661404755855703, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8127661404966819172, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
       propertyPath: m_Name
