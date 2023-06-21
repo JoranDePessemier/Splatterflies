@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_Color.b
+      value: 0.11209035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8127661404966819172, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
       propertyPath: m_Name
-      value: ButterflyStraightLine
+      value: ButterflyFlyingStraightLine
       objectReference: {fileID: 0}
     - target: {fileID: 8127661404966819173, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
       propertyPath: m_RootOrder
@@ -74,4 +86,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2636b8a6a984f43874ccc1f1d96847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _movementSpeedMinMax: {x: 2, y: 4}

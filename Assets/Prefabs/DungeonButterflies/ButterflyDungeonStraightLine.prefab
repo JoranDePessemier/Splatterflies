@@ -73,3 +73,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+--- !u!1 &4628723263802929091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 3528508411647654567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3507395332947811047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628723263802929091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e69da34bfee5441a1d8bf1ab0ed17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _movementSpeedMinMax: {x: 1, y: 3}
+  _startPointSquare: {x: -7.2, y: -5.85}
+  _endPointSquare: {x: 7.36, y: -13.46}
+  _deadButterFlyToSpawn: {fileID: 0}
+  _shakeAmount: 2000

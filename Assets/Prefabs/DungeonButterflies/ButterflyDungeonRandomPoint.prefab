@@ -71,5 +71,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+--- !u!1 &4112066539925851576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 5322056598644840668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6949961722881529325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112066539925851576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e382192cb7c34f469e7a7d816fea1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _movementSpeedMinMax: {x: 1, y: 3}
+  _startPointSquare: {x: -7.2, y: -5.85}
+  _endPointSquare: {x: 7.36, y: -13.46}
+  _deadButterFlyToSpawn: {fileID: 0}
+  _amountToClick: 5
