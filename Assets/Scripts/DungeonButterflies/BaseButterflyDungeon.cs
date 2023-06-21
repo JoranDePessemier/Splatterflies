@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,7 @@ using UnityEngine.EventSystems;
 public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     protected Rigidbody2D _body;
-    private Controls _controls;
+    protected Controls _controls;
 
     private Camera _mainCam;
 
@@ -24,17 +25,22 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField]
     private Vector2 _endPointSquare;
 
+    [SerializeField]
+    private DeadButterfly _deadButterFlyToSpawn;
+
+    public event EventHandler<WasCaughtEventArgs> WasCompleted;
+
 
     private float _movementSpeed;
     private bool _isMoving = false;
-    private bool _isHolding = false;
+    protected bool _isHolding = false;
 
     public ButterflyType Type { get { return _type; } private set { _type = value; } }
 
     private void Awake()
     {
         _body = this.GetComponent<Rigidbody2D>();
-        _movementSpeed = Random.Range(_movementSpeedMinMax.x, _movementSpeedMinMax.y);
+        _movementSpeed = UnityEngine.Random.Range(_movementSpeedMinMax.x, _movementSpeedMinMax.y);
 
         _mainCam = Camera.main;
 
@@ -55,7 +61,7 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     {
         if (!_isMoving)
         {
-            Vector2 randomPoint = new Vector2(Random.Range(_startPointSquare.x, _endPointSquare.x), Random.Range(_startPointSquare.y, _endPointSquare.y));
+            Vector2 randomPoint = new Vector2(UnityEngine.Random.Range(_startPointSquare.x, _endPointSquare.x), UnityEngine.Random.Range(_startPointSquare.y, _endPointSquare.y));
             _isMoving = true;
             StartCoroutine(Utilities.MoveToPoint(randomPoint, () => _isMoving = false, _body, _movementSpeed));
         }
@@ -69,10 +75,29 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         _isHolding = true;
+        Clicked();
+    }
+
+    protected virtual void Clicked()
+    {
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         _isHolding = false;
+    }
+
+    protected virtual void Completed()
+    {
+        Destroy(this.gameObject);
+        OnWasCompleted(new WasCaughtEventArgs(Type));
+        GameObject.Instantiate(_deadButterFlyToSpawn.gameObject, _body.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
+    }
+
+    private void OnWasCompleted(WasCaughtEventArgs eventArgs)
+    {
+        var handler = WasCompleted;
+        handler?.Invoke(this,eventArgs);
     }
 }
