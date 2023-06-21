@@ -71,7 +71,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
 --- !u!1 &4628723263802929091 stripped
 GameObject:
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _movementSpeedMinMax: {x: 1, y: 3}
-  _startPointSquare: {x: -7.2, y: -5.85}
-  _endPointSquare: {x: 7.36, y: -13.46}
-  _deadButterFlyToSpawn: {fileID: 0}
+  _startPointSquare: {x: -7.2, y: -40.72}
+  _endPointSquare: {x: 7.36, y: -48.4}
+  _deadButterFlyToSpawn: {fileID: -5507165696738415947, guid: fed87a673e2ef52408d1ac4c891e0d95, type: 3}
   _shakeAmount: 2000

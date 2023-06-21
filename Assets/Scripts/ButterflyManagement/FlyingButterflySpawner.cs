@@ -39,14 +39,13 @@ public class FlyingButterflySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnButterfly(ButterflyType type)
+    public void SpawnButterfly(ButterflyType type)
     {
         Transform flyTransform = _spawnObjects[_spawnTypes.IndexOf(type)].transform;
 
         Vector2 spawnPoint = DetermineSpawnPoint();
 
         BaseButterflyFlying spawnedFly = GameObject.Instantiate(flyTransform, spawnPoint, flyTransform.rotation).GetComponent<BaseButterflyFlying>();
-        spawnedFly.WasCaught += (s, e) => SpawnButterfly(e.Type);
         spawnedFly.LeftScene += (s, e) => SpawnButterfly(e.Type);
 
         spawnedFly.WasCaught += _dungeonSpawner.SpawnButterfly;

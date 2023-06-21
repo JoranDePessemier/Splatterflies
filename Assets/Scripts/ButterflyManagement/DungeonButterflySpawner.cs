@@ -11,6 +11,8 @@ public class DungeonButterflySpawner : MonoBehaviour
 
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
 
+    private FlyingButterflySpawner _flyingSpawner;
+
     [SerializeField]
     private Vector2 _butterflySpawnPoint;
 
@@ -25,6 +27,8 @@ public class DungeonButterflySpawner : MonoBehaviour
         {
             _spawnTypes.Add(fly.Type);
         }
+
+        _flyingSpawner = this.GetComponent<FlyingButterflySpawner>();
     }
 
     internal void SpawnButterfly(object sender, WasCaughtEventArgs e)
@@ -32,5 +36,6 @@ public class DungeonButterflySpawner : MonoBehaviour
         Transform flyTransform = _spawnObjects[_spawnTypes.IndexOf(e.Type)].transform;
 
         BaseButterflyDungeon spawnedFly = GameObject.Instantiate(flyTransform, _butterflySpawnPoint, flyTransform.rotation).GetComponent<BaseButterflyDungeon>();
+        spawnedFly.WasCompleted += (s, e) => _flyingSpawner.SpawnButterfly(e.Type);
     }
 }
