@@ -16,6 +16,7 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField]
     private ButterflyType _type;
 
+
     [SerializeField]
     private Vector2 _movementSpeedMinMax;
 
@@ -28,12 +29,17 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField]
     private DeadButterfly _deadButterFlyToSpawn;
 
+    [SerializeField]
+    private GameObject _spriteObject;
+
     public event EventHandler<WasCaughtEventArgs> WasCompleted;
 
 
     private float _movementSpeed;
     private bool _isMoving = false;
     protected bool _isHolding = false;
+
+    private bool _isInactive = false;
 
     public ButterflyType Type { get { return _type; } private set { _type = value; } }
 
@@ -70,6 +76,11 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
         {
             _body.MovePosition(Utilities.GetMousePositionWorldSpace(_controls, _mainCam));
         }
+
+        if(_isInactive)
+        {
+            _body.position = new Vector2(200, 200);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -88,16 +99,23 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
         _isHolding = false;
     }
 
-    protected virtual void Completed()
+    public virtual GameObject Completed()
     {
         Destroy(this.gameObject);
         OnWasCompleted(new WasCaughtEventArgs(Type));
-        GameObject.Instantiate(_deadButterFlyToSpawn.gameObject, _body.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
+        return GameObject.Instantiate(_deadButterFlyToSpawn.gameObject, _body.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
     }
 
     private void OnWasCompleted(WasCaughtEventArgs eventArgs)
     {
         var handler = WasCompleted;
         handler?.Invoke(this,eventArgs);
+    }
+
+    internal void SetInactive()
+    {
+        _isInactive = true;
+        _spriteObject.SetActive(false);
+        this.GetComponent<Collider2D>().enabled = false;
     }
 }

@@ -96,4 +96,10 @@ MonoBehaviour:
   _startPointSquare: {x: -7.2, y: -40.72}
   _endPointSquare: {x: 7.36, y: -48.4}
   _deadButterFlyToSpawn: {fileID: -5507165696738415947, guid: fed87a673e2ef52408d1ac4c891e0d95, type: 3}
+  _spriteObject: {fileID: 4628723263996720113}
   _shakeAmount: 2000
+--- !u!1 &4628723263996720113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127661404755855702, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 3528508411647654567}
+  m_PrefabAsset: {fileID: 0}

@@ -74,6 +74,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+--- !u!1 &4112066539599942026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127661404755855702, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 5322056598644840668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4112066539925851576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
@@ -96,4 +101,5 @@ MonoBehaviour:
   _startPointSquare: {x: -7.2, y: -40.72}
   _endPointSquare: {x: 7.36, y: -48.4}
   _deadButterFlyToSpawn: {fileID: -5507165696738415947, guid: fed87a673e2ef52408d1ac4c891e0d95, type: 3}
+  _spriteObject: {fileID: 4112066539599942026}
   _amountToClick: 5
