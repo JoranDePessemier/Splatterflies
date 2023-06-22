@@ -44,14 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: OrderBoards
+    uniqueID: 2890097243
+    locked: 0
   - name: Butterflies
     uniqueID: 2868357077
     locked: 0
   - name: Hook
     uniqueID: 3658442265
-    locked: 0
-  - name: OrderBoards
-    uniqueID: 2890097243
     locked: 0
   - name: DeadButterflies
     uniqueID: 3170108047

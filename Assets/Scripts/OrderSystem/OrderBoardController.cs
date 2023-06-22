@@ -25,19 +25,29 @@ public class OrderBoardController : MonoBehaviour
 
     private List<OrderType> _currentOrdertypes = new List<OrderType>();
 
-    private GameObject _boardObject;
     private int _unCompletedOrders;
+
+    private bool _hasActiveOrder;
+
+    public bool HasActiveOrder => _hasActiveOrder;
+
+    public event EventHandler<EventArgs> OrderCompleted;
 
     private void Awake()
     {
-        _boardObject = this.gameObject;
         transform.position = _completePosition;
-        GenerateOrder(4, 20, 4);
     }
 
-    public void GenerateOrder(int orderAmount, float orderTime, int availableOrderTypes)
+    public void GenerateOrder(int orderAmount, int availableOrderTypes)
     {
+        foreach(SpriteRenderer renderer in _orderSpots)
+        {
+            renderer.sprite = null;
+        }
+
         _unCompletedOrders = orderAmount;
+
+        _hasActiveOrder = true;
 
         for (int i = 0; i < orderAmount; i++)
         {
@@ -45,7 +55,7 @@ public class OrderBoardController : MonoBehaviour
             _orderSpots[i].sprite = _currentOrdertypes[i].PreviewSprite;
         }
 
-        LeanTween.moveLocal(_boardObject, _openPosition, _movementTime).setEase(LeanTweenType.easeOutBounce);
+        LeanTween.moveLocal(gameObject, _openPosition, _movementTime).setEase(LeanTweenType.easeOutBounce);
     }
 
     private void OnDrawGizmosSelected()
@@ -86,6 +96,13 @@ public class OrderBoardController : MonoBehaviour
 
     private void CompleteOrder()
     {
-        LeanTween.moveLocal(_boardObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack);
+        LeanTween.moveLocal(gameObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack).setOnComplete(() => OnOrderCompleted(EventArgs.Empty));
+        _hasActiveOrder = false;
+    }
+
+    private void OnOrderCompleted(EventArgs eventArgs)
+    {
+        var handler = OrderCompleted;
+        handler?.Invoke(this, eventArgs);
     }
 }
