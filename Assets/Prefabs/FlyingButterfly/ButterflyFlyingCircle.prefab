@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.g
-      value: 0.0039215684
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.r
-      value: 0.92304295
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 50230161, guid: 0a417eb6bcb7f644e847bc6ecafecb39, type: 3}
     - target: {fileID: 8127661404966819172, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
       propertyPath: m_Name
       value: ButterflyFlyingCircle

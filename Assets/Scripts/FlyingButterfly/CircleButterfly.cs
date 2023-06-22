@@ -57,7 +57,6 @@ public class CircleButterfly: BaseButterflyFlying
 
     protected override void UpdateMovement()
     {
-        print(_state);
 
         switch (_state)
         {

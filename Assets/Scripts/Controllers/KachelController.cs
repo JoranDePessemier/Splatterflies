@@ -23,16 +23,17 @@ public class KachelController : MonoBehaviour
 
     private BaseButterflyDungeon _holdingButterfly;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(_holdingButterfly == null)
         {
             GameObject collisionObject = collision.gameObject;
 
-            collisionObject.TryGetComponent<BaseButterflyDungeon>(out _holdingButterfly);
+            collisionObject.TryGetComponent<BaseButterflyDungeon>(out BaseButterflyDungeon butterfly);
 
-            if (Utilities.IsInMask(collisionObject, _butterflyMask) && _holdingButterfly.Type == _typeToHold)
+            if (Utilities.IsInMask(collisionObject, _butterflyMask) && butterfly.Type == _typeToHold && butterfly.PlayerIsHolding)
             {
+                _holdingButterfly = butterfly;
                 StartCoroutine(WaitForActivationTime());
             }
         }

@@ -12,17 +12,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8127661404755855700, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2100223136, guid: a7a64e38ebf56224bb08b1cc52773520, type: 3}
     - target: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
       propertyPath: m_Name
       value: ButterflyDungeonStraightSine

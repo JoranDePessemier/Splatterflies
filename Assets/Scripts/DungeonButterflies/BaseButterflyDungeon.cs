@@ -39,6 +39,8 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
     private bool _isMoving = false;
     protected bool _isHolding = false;
 
+    public bool PlayerIsHolding => _isHolding;
+
     private bool _isInactive = false;
 
     public ButterflyType Type { get { return _type; } private set { _type = value; } }

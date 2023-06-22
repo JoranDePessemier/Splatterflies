@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.b
-      value: 0.11209035
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127661404755855700, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -916241316, guid: b303035e527a1e244a876d5c812c7325, type: 3}
     - target: {fileID: 8127661404966819172, guid: bfb2218afac2e86439de94383f4f36ae, type: 3}
       propertyPath: m_Name
       value: ButterflyFlyingStraightLine
