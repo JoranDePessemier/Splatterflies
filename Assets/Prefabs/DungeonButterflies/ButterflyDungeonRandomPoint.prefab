@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
@@ -65,12 +66,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6949961722881529325}
+    - targetCorrespondingSourceObject: {fileID: 8127661404755855702, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6928388572533701389}
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
 --- !u!1 &4112066539599942026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127661404755855702, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
   m_PrefabInstance: {fileID: 5322056598644840668}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6928388572533701389
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112066539599942026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: aa429c8fdf97d6c4bb25b21f39cf3fcf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4112066539925851576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}

@@ -16,6 +16,7 @@ public class MainOrderController : MonoBehaviour
 
     private int _nextThreshold;
 
+    private float _currentTime;
 
 
     private void Start()
@@ -27,6 +28,12 @@ public class MainOrderController : MonoBehaviour
 
         CheckDifficulty();
         ResetBoards();
+        GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder;
+    }
+
+    private void Update()
+    {
+        GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
     }
 
     private void Board_OrderCompleted(object sender, EventArgs e)
@@ -34,6 +41,7 @@ public class MainOrderController : MonoBehaviour
         GlobalVariables.Instance.CompletedOrders++;
         CheckDifficulty();
         ResetBoards();
+        GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder;
     }
 
     private void ResetBoards()

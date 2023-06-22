@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
@@ -15,6 +16,10 @@ PrefabInstance:
       propertyPath: _deadButterFlyToSpawn
       value: 
       objectReference: {fileID: 5199291691288735312, guid: 8267e2e45ec9c344d9967496a2fcec2e, type: 3}
+    - target: {fileID: 7267385519084967071, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 39771ba31543cfe418e0b97ffb96a264, type: 2}
     - target: {fileID: 8127661404755855700, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -68,4 +73,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}

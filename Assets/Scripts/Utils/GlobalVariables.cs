@@ -15,4 +15,6 @@ public class GlobalVariables : Singleton<GlobalVariables>
     public ScreenType ScreenState { get; set; }
 
     public int CompletedOrders { get; set; }
+
+    public float CurrentTime { get; set; }
 }

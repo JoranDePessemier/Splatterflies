@@ -44,7 +44,7 @@ public class OrderBoardController : MonoBehaviour
         {
             renderer.sprite = null;
         }
-
+        _currentOrdertypes.Clear();
         _unCompletedOrders = orderAmount;
 
         _hasActiveOrder = true;
@@ -96,8 +96,8 @@ public class OrderBoardController : MonoBehaviour
 
     private void CompleteOrder()
     {
-        LeanTween.moveLocal(gameObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack).setOnComplete(() => OnOrderCompleted(EventArgs.Empty));
-        _hasActiveOrder = false;
+        LeanTween.moveLocal(gameObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack).setOnComplete(() => { _hasActiveOrder = false; OnOrderCompleted(EventArgs.Empty);  });
+
     }
 
     private void OnOrderCompleted(EventArgs eventArgs)
