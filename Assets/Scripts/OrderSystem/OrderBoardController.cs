@@ -86,6 +86,6 @@ public class OrderBoardController : MonoBehaviour
 
     private void CompleteOrder()
     {
-        throw new NotImplementedException();
+        LeanTween.moveLocal(_boardObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack);
     }
 }

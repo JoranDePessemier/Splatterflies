@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _movementSpeedMinMax: {x: 1, y: 3}
-  _startPointSquare: {x: -7.2, y: -40.72}
+  _startPointSquare: {x: -4.3, y: -40.72}
   _endPointSquare: {x: 7.36, y: -48.4}
   _deadButterFlyToSpawn: {fileID: 3582988610218785498, guid: 8258469aaf549164f97d401533980003, type: 3}
   _spriteObject: {fileID: 4112066539599942026}
