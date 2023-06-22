@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public enum GrappleState
@@ -35,6 +36,12 @@ public class HookController : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer _sprite;
+
+    [SerializeField]
+    private UnityEvent _grappled;
+
+    [SerializeField]
+    private UnityEvent _StartGrappling;
 
 
     private GrappleState _state = GrappleState.OnBase;
@@ -97,6 +104,7 @@ public class HookController : MonoBehaviour
         {
             StartCoroutine(Utilities.MoveToPoint(_mousePosition,StartReturning, _body, _hookSpeed));
             _state = GrappleState.Grappling;
+            _StartGrappling.Invoke();
         }
     }
 
@@ -122,6 +130,7 @@ public class HookController : MonoBehaviour
 
             butterfly.Caught(_rotatorTransform.position,_hookSpeed);
             StopAllCoroutines();
+            _grappled.Invoke();
             StartReturning();
             
         }

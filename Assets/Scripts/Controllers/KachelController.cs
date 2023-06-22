@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KachelController : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class KachelController : MonoBehaviour
     [SerializeField]
     private float _launchForce;
 
+    [SerializeField]
+    private UnityEvent _close;
+
+    [SerializeField]
+    private UnityEvent _open;
+
     private BaseButterflyDungeon _holdingButterfly;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -34,6 +41,7 @@ public class KachelController : MonoBehaviour
             if (Utilities.IsInMask(collisionObject, _butterflyMask) && butterfly.Type == _typeToHold && butterfly.PlayerIsHolding)
             {
                 _holdingButterfly = butterfly;
+                _close.Invoke();
                 StartCoroutine(WaitForActivationTime());
             }
         }
@@ -46,7 +54,11 @@ public class KachelController : MonoBehaviour
         yield return new WaitForSeconds(_activationTime);
         Rigidbody2D deadBody = _holdingButterfly.Completed().GetComponent<Rigidbody2D>();
         deadBody.position = _launchTransform.position;
+
+
         deadBody.AddForce(_launchTransform.up * _launchForce, ForceMode2D.Impulse);
         _holdingButterfly = null;
+        _open.Invoke();
+
     }
 }

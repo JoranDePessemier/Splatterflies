@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class DeadButterfly : MonoBehaviour, IPointerDownHandler , IPointerUpHandler
@@ -14,6 +15,12 @@ public class DeadButterfly : MonoBehaviour, IPointerDownHandler , IPointerUpHand
 
     [SerializeField]
     private ButterflyType _type;
+
+    [SerializeField]
+    private UnityEvent _spawn;
+
+    [SerializeField]
+    private GameObject _particle;
 
     public ButterflyType Type => _type;
 
@@ -29,6 +36,10 @@ public class DeadButterfly : MonoBehaviour, IPointerDownHandler , IPointerUpHand
         _controls.Enable();
 
         _collider = this.GetComponent<Collider2D>();
+
+        _spawn.Invoke();
+        GameObject.Instantiate(_particle.transform, transform.position, transform.rotation).GetComponent<ParticleSystem>().Play();
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)

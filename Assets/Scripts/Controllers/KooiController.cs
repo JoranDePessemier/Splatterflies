@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class KooiController : MonoBehaviour, IPointerClickHandler
@@ -24,7 +25,11 @@ public class KooiController : MonoBehaviour, IPointerClickHandler
 
     private int _currentClicks;
 
+    [SerializeField]
+    private UnityEvent _close;
 
+    [SerializeField]
+    private UnityEvent _open;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -39,6 +44,7 @@ public class KooiController : MonoBehaviour, IPointerClickHandler
                 _holdingButterfly = butterfly;
                 butterfly.SetInactive();
                 _currentClicks = 0;
+                _close.Invoke();
             }
         }
 
@@ -65,5 +71,6 @@ public class KooiController : MonoBehaviour, IPointerClickHandler
         deadBody.position = _launchTransform.position;
         deadBody.AddForce(_launchTransform.up * _launchForce, ForceMode2D.Impulse);
         _holdingButterfly = null;
+        _open.Invoke();
     }
 }
