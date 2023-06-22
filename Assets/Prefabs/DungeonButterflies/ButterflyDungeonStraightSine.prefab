@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -9148717208563685022, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+      propertyPath: _deadButterFlyToSpawn
+      value: 
+      objectReference: {fileID: 5199291691288735312, guid: 8267e2e45ec9c344d9967496a2fcec2e, type: 3}
     - target: {fileID: 8127661404755855700, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
       propertyPath: m_Sprite
       value: 

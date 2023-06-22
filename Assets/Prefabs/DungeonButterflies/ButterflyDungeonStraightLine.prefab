@@ -87,7 +87,7 @@ MonoBehaviour:
   _movementSpeedMinMax: {x: 1, y: 3}
   _startPointSquare: {x: -7.2, y: -40.72}
   _endPointSquare: {x: 7.36, y: -48.4}
-  _deadButterFlyToSpawn: {fileID: -5507165696738415947, guid: fed87a673e2ef52408d1ac4c891e0d95, type: 3}
+  _deadButterFlyToSpawn: {fileID: 3033324724370796602, guid: dc6a3b1de72ce1448b49ee7660cf427c, type: 3}
   _spriteObject: {fileID: 4628723263996720113}
   _shakeAmount: 6000
 --- !u!1 &4628723263996720113 stripped
