@@ -36,10 +36,13 @@ public class DeadButterfly : MonoBehaviour, IPointerDownHandler , IPointerUpHand
         _controls.Enable();
 
         _collider = this.GetComponent<Collider2D>();
-
-        _spawn.Invoke();
         GameObject.Instantiate(_particle.transform, transform.position, transform.rotation).GetComponent<ParticleSystem>().Play();
         
+    }
+
+    private void Start()
+    {
+        _spawn.Invoke();
     }
 
     public void OnPointerDown(PointerEventData eventData)

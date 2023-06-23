@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
@@ -20,6 +21,12 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _movementTime;
 
+    [SerializeField]
+    private UnityEvent _moveDown;
+
+    [SerializeField]
+    private UnityEvent _moveUp;
+
     private void Awake()
     {
         _camObject = this.gameObject;
@@ -32,10 +39,12 @@ public class CameraController : MonoBehaviour
         if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
         {
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
+            _moveDown.Invoke();
             LeanTween.moveLocal(_camObject,_camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Bottom); 
         }
         else if(GlobalVariables.Instance.ScreenState == ScreenType.Bottom)
         {
+            _moveUp.Invoke();
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
             LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Top); 
         }

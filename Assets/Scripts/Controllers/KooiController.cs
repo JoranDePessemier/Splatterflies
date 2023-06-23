@@ -31,6 +31,9 @@ public class KooiController : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private UnityEvent _open;
 
+    [SerializeField]
+    private UnityEvent _clicked;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (_holdingButterfly == null)
@@ -58,6 +61,7 @@ public class KooiController : MonoBehaviour, IPointerClickHandler
         }
 
         _currentClicks++;
+        _clicked.Invoke();
 
         if(_currentClicks >= _activationClicks)
         {

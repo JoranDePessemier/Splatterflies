@@ -43,6 +43,9 @@ public class HookController : MonoBehaviour
     [SerializeField]
     private UnityEvent _StartGrappling;
 
+    [SerializeField]
+    private UnityEvent _returnToWell;
+
 
     private GrappleState _state = GrappleState.OnBase;
 
@@ -111,7 +114,7 @@ public class HookController : MonoBehaviour
     private void StartReturning()
     {
         _state = GrappleState.Returning;
-        StartCoroutine(Utilities.MoveToPoint(_rotatorTransform.position, () => { _state = GrappleState.OnBase; },_body,_hookSpeed));
+        StartCoroutine(Utilities.MoveToPoint(_rotatorTransform.position, () => { _state = GrappleState.OnBase; _returnToWell.Invoke(); },_body,_hookSpeed));
 
     }
 

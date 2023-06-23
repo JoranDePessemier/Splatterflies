@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 8127661404966819168}
   - component: {fileID: -9148717208563685022}
   - component: {fileID: 5717298523474384106}
+  - component: {fileID: 909100533136677766}
   m_Layer: 3
   m_Name: ButterflyDungeonBase
   m_TagString: Untagged
@@ -232,6 +233,21 @@ MonoBehaviour:
   _endPointSquare: {x: 7.36, y: -48.4}
   _deadButterFlyToSpawn: {fileID: -5507165696738415947, guid: fed87a673e2ef52408d1ac4c891e0d95, type: 3}
   _spriteObject: {fileID: 8127661404755855702}
+  _clicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 909100533136677766}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Clicked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5717298523474384106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,3 +261,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8127661404755855700}
+--- !u!114 &909100533136677766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127661404966819172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsToAdd:
+  - _name: Clicked
+    _clip: {fileID: 8300000, guid: 58e8fd75d65ec414ea3ec6ab441b8a92, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 0.6, y: 1.6}
+    _is3dSound: 0
+    _maxDistance: 0

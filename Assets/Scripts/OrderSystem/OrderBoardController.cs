@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OrderBoardController : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class OrderBoardController : MonoBehaviour
 
     [SerializeField]
     private float _movementTime;
+
+    [SerializeField]
+    private UnityEvent _butterflyPlaced;
+
+    [SerializeField]
+    private UnityEvent _orderCompleted;
 
     private List<OrderType> _currentOrdertypes = new List<OrderType>();
 
@@ -82,6 +89,7 @@ public class OrderBoardController : MonoBehaviour
                 if(type.Type == butterfly.Type && _orderSpots[i].sprite == type.PreviewSprite)
                 {
                     Destroy(butterfly.gameObject);
+                    _butterflyPlaced.Invoke();
                     _orderSpots[i].sprite = type.FilledInSprite;
                     _unCompletedOrders--;
                     if(_unCompletedOrders <= 0 )
@@ -96,7 +104,7 @@ public class OrderBoardController : MonoBehaviour
 
     private void CompleteOrder()
     {
-        LeanTween.moveLocal(gameObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack).setOnComplete(() => { _hasActiveOrder = false; OnOrderCompleted(EventArgs.Empty);  });
+        LeanTween.moveLocal(gameObject, _completePosition, _movementTime).setEase(LeanTweenType.easeInBack).setOnComplete(() => { _hasActiveOrder = false; _orderCompleted.Invoke(); OnOrderCompleted(EventArgs.Empty);  });
 
     }
 

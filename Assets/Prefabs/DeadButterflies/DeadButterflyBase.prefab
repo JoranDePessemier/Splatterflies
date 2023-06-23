@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8127661404966819170}
   - component: {fileID: 8127661404966819168}
   - component: {fileID: -5507165696738415947}
+  - component: {fileID: 8271540729796372433}
   m_Layer: 7
   m_Name: DeadButterflyBase
   m_TagString: Untagged
@@ -206,5 +207,37 @@ MonoBehaviour:
   _type: 0
   _spawn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8271540729796372433}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: KillSound
+          m_BoolArgument: 0
+        m_CallState: 2
   _particle: {fileID: 4498213380131807077, guid: 90bea6d06bbe5504fb70d369603cc9a6, type: 3}
+--- !u!114 &8271540729796372433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127661404966819172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsToAdd:
+  - _name: KillSound
+    _clip: {fileID: 8300000, guid: 1a3e23b531aadd749972b96e6a30ddc5, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 0.4, y: 0.6}
+    _is3dSound: 0
+    _maxDistance: 0

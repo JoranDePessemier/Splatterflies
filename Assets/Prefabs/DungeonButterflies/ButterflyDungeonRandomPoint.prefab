@@ -125,4 +125,30 @@ MonoBehaviour:
   _endPointSquare: {x: 7.36, y: -48.4}
   _deadButterFlyToSpawn: {fileID: 3582988610218785498, guid: 8258469aaf549164f97d401533980003, type: 3}
   _spriteObject: {fileID: 4112066539599942026}
+  _clicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4991809561339167578}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Clicked
+          m_BoolArgument: 0
+        m_CallState: 2
   _amountToClick: 5
+--- !u!114 &4991809561339167578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 909100533136677766, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 5322056598644840668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112066539925851576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

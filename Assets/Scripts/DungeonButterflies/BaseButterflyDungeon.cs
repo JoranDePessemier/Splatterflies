@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -31,6 +32,9 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
 
     [SerializeField]
     private GameObject _spriteObject;
+
+    [SerializeField]
+    private UnityEvent _clicked;
 
     public event EventHandler<WasCaughtEventArgs> WasCompleted;
 
@@ -93,7 +97,7 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
 
     protected virtual void Clicked()
     {
-
+        _clicked.Invoke();
     }
 
     public void OnPointerUp(PointerEventData eventData)
