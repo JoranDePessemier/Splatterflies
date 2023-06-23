@@ -76,10 +76,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3507395332947811047}
-    - targetCorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1143813226066912038}
   m_SourcePrefab: {fileID: 100100000, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+--- !u!114 &4353293823112552737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 909100533136677766, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
+  m_PrefabInstance: {fileID: 3528508411647654567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628723263802929091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4628723263802929091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127661404966819172, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
@@ -106,7 +114,7 @@ MonoBehaviour:
   _clicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1143813226066912038}
+      - m_Target: {fileID: 4353293823112552737}
         m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 5
@@ -119,19 +127,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _shakeAmount: 6000
---- !u!114 &1143813226066912038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4628723263802929091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundsToAdd: []
 --- !u!1 &4628723263996720113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127661404755855702, guid: 1165a931723866b42b387f8cb6f7c681, type: 3}
