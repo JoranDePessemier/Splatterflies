@@ -70,7 +70,7 @@ public class HookController : MonoBehaviour
 
     private void Update()
     {
-        if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
+        if(GlobalVariables.Instance.ScreenState == ScreenType.Top && Time.timeScale != 0)
         {
             _controls.Enable();
         }
