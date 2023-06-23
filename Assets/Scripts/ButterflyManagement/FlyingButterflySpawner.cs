@@ -18,25 +18,34 @@ public class FlyingButterflySpawner : MonoBehaviour
     [SerializeField]
     private float _amountPerButterfly = 3;
 
+    private int _currentButterflySpawnAmount;
+
     DungeonButterflySpawner _dungeonSpawner;
+    MainOrderController _mainOrderController;
 
 
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
     private void Awake()
     {
         _dungeonSpawner = this.GetComponent<DungeonButterflySpawner>();
+        _mainOrderController = this.GetComponent<MainOrderController>();
+        _mainOrderController.ModifyDifficulty += ModifySpawningButterflies;
     }
 
-    private void Start()
+    private void ModifySpawningButterflies(object sender, ModifyDifficultyEventArgs e)
     {
-        foreach(BaseButterflyFlying fly in _spawnObjects)
+        for (int i = _currentButterflySpawnAmount; i < e.CurrentModifier.ButterflyTypeAmount; i++)
         {
+            BaseButterflyFlying fly = _spawnObjects[i];
+
             _spawnTypes.Add(fly.Type);
-            for (int i = 0; i < _amountPerButterfly; i++)
+            for (int a = 0; a < _amountPerButterfly; a++)
             {
                 SpawnButterfly(fly.Type);
             }
         }
+
+        _currentButterflySpawnAmount = e.CurrentModifier.ButterflyTypeAmount;
     }
 
     public void SpawnButterfly(ButterflyType type)

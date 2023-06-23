@@ -3,6 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ModifyDifficultyEventArgs : EventArgs
+{
+    public ModifyDifficultyEventArgs(DifficultyModifier currentModifier)
+    {
+        CurrentModifier = currentModifier;
+    }
+
+    public DifficultyModifier CurrentModifier { get; set; }   
+}
+
 public class MainOrderController : MonoBehaviour
 {
     [SerializeField]
@@ -14,9 +24,9 @@ public class MainOrderController : MonoBehaviour
     private int _currentDifficultyModifierIndex = -1;
     private DifficultyModifier _currentDifficultyModifier;
 
-    private int _nextThreshold;
+    public event EventHandler<ModifyDifficultyEventArgs> ModifyDifficulty;
 
-    private float _currentTime;
+    private int _nextThreshold;
 
 
     private void Start()
@@ -34,6 +44,8 @@ public class MainOrderController : MonoBehaviour
     private void Update()
     {
         GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
+
+        print(_nextThreshold);
     }
 
     private void Board_OrderCompleted(object sender, EventArgs e)
@@ -61,6 +73,8 @@ public class MainOrderController : MonoBehaviour
         {
             _currentDifficultyModifierIndex++;
             _currentDifficultyModifier = _modifiers[_currentDifficultyModifierIndex];
+
+            OnModifyDifficulty(new ModifyDifficultyEventArgs(_currentDifficultyModifier));
             
             if(_currentDifficultyModifierIndex + 1 < _modifiers.Length)
             {
@@ -71,5 +85,11 @@ public class MainOrderController : MonoBehaviour
                 _nextThreshold = -1;
             }
         }
+    }
+
+    private void OnModifyDifficulty(ModifyDifficultyEventArgs eventArgs)
+    {
+        var handler = ModifyDifficulty;
+        handler?.Invoke(this, eventArgs);
     }
 }

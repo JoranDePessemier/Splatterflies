@@ -123,60 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &35661369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 35661370}
-  - component: {fileID: 35661371}
-  m_Layer: 0
-  m_Name: OrderSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &35661370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35661369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35661371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35661369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d462c7f0a38ddc2439ae6f518880848c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _modifiers:
-  - _modifyMinScore: 0
-    _maxTimePerOrder: 50
-    _maxButterflyAmount: 4
-    _butterflyTypeAmount: 4
-    _orderAmount: 2
-  _boards:
-  - {fileID: 845169669}
-  - {fileID: 1006368874}
-  - {fileID: 1056047666}
 --- !u!1 &66594942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1193,7 @@ RectTransform:
   - {fileID: 1538451208}
   - {fileID: 1668101443}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6515,6 +6461,7 @@ GameObject:
   - component: {fileID: 1124453708}
   - component: {fileID: 1124453707}
   - component: {fileID: 1124453709}
+  - component: {fileID: 1124453710}
   m_Layer: 0
   m_Name: ButterflySpawner
   m_TagString: Untagged
@@ -6575,6 +6522,33 @@ MonoBehaviour:
   - {fileID: 7750048550977786486, guid: c4cb6a61617006e428df401b31290678, type: 3}
   - {fileID: 6050562740822761623, guid: 25387c576f92a3d4da2e78d97c6b62db, type: 3}
   _butterflySpawnPoint: {x: 0, y: -45.02}
+--- !u!114 &1124453710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124453706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d462c7f0a38ddc2439ae6f518880848c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modifiers:
+  - _modifyMinScore: 0
+    _maxTimePerOrder: 50
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 2
+    _orderAmount: 2
+  - _modifyMinScore: 2
+    _maxTimePerOrder: 50
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 3
+    _orderAmount: 2
+  _boards:
+  - {fileID: 845169669}
+  - {fileID: 1006368874}
+  - {fileID: 1056047666}
 --- !u!1 &1130088795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3349294407746542318, guid: 3cd6c370c5c975a4abc88118e7478f5d, type: 3}
@@ -12822,7 +12796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1901912822778207215, guid: 5c6a17f5164dd784c9e78f9b5182e514, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1901912822778207215, guid: 5c6a17f5164dd784c9e78f9b5182e514, type: 3}
       propertyPath: m_AnchorMax.x
