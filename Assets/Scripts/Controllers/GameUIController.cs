@@ -21,12 +21,19 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private float _timerMoveSpeed;
 
+    [SerializeField]
+    private int _timerWarningSeconds;
+
     private bool _timerIsThere = false;
+    private Animator _timerAnimator;
+
+    private float _previousTime;
 
     private void Awake()
     {
         Vector3 movePosition = new Vector3(0, _timerMoveUpAmount, 0);
         LeanTween.move(_timerTransform, movePosition, 0).setEase(LeanTweenType.easeInCubic);
+        _timerAnimator = _currentTimeText.GetComponent<Animator>();
     }
 
 
@@ -36,7 +43,19 @@ public class GameUIController : MonoBehaviour
 
         _currentTimeText.text = ((int)Mathf.Clamp(GlobalVariables.Instance.CurrentTime,0,int.MaxValue)).ToString();
 
+        if(GlobalVariables.Instance.CurrentTime <= _timerWarningSeconds)
+        {
+            _timerAnimator.SetBool("TimeLow", true);
+        }
+        else
+        {
+            _timerAnimator.SetBool("TimeLow", false);
+        }
 
+        if(Mathf.Abs(GlobalVariables.Instance.CurrentTime - _previousTime) > 2)
+        {
+            _timerAnimator.SetTrigger("GainTime");
+        }
 
 
         if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere)
@@ -49,6 +68,8 @@ public class GameUIController : MonoBehaviour
             _timerIsThere = true;
             TimerAppears();
         }
+
+        _previousTime = GlobalVariables.Instance.CurrentTime;
     }
 
 

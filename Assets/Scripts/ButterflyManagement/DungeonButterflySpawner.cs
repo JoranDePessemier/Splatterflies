@@ -16,6 +16,8 @@ public class DungeonButterflySpawner : MonoBehaviour
     [SerializeField]
     private Vector2 _butterflySpawnPoint;
 
+    private CameraController _cameraController;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawIcon(_butterflySpawnPoint, "character_Mode");
@@ -29,6 +31,7 @@ public class DungeonButterflySpawner : MonoBehaviour
         }
 
         _flyingSpawner = this.GetComponent<FlyingButterflySpawner>();
+        _cameraController = FindObjectOfType<CameraController>();
     }
 
     internal void SpawnButterfly(object sender, WasCaughtEventArgs e)
@@ -36,6 +39,6 @@ public class DungeonButterflySpawner : MonoBehaviour
         Transform flyTransform = _spawnObjects[_spawnTypes.IndexOf(e.Type)].transform;
 
         BaseButterflyDungeon spawnedFly = GameObject.Instantiate(flyTransform, _butterflySpawnPoint, flyTransform.rotation).GetComponent<BaseButterflyDungeon>();
-        spawnedFly.WasCompleted += (s, e) => _flyingSpawner.SpawnButterfly(e.Type);
+        spawnedFly.WasCompleted += (s, e) => { _flyingSpawner.SpawnButterfly(e.Type); _cameraController.ScreenShake(); };
     }
 }

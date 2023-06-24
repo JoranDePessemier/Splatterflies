@@ -773,7 +773,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420037}
   - component: {fileID: 519420038}
@@ -846,7 +845,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.15294118, g: 0.15294118, b: 0.21176472, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -887,52 +886,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d8e2e0d77f157459d6ec8e21148cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camPositionUp: {x: 0, y: 0, z: -10}
-  _camPositionDown: {x: 0, y: -45.02, z: -10}
-  _camPositionMiddle: {x: 0, y: -22.51, z: -10}
-  _movementTime: 3
-  _moveDown:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420038}
-        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GoDown
-          m_BoolArgument: 0
-        m_CallState: 2
-  _moveUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420038}
-        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GoUp
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!223 &519420035
 Canvas:
   m_ObjectHideFlags: 0
@@ -963,13 +916,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1638435403}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -992,33 +945,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
---- !u!114 &519420038
-MonoBehaviour:
+--- !u!95 &519420038
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundsToAdd:
-  - _name: GoDown
-    _clip: {fileID: 8300000, guid: e566f75a7a3027247b9bb0310227f887, type: 3}
-    _volume: 1
-    _looping: 0
-    _pitchVariation: {x: 0.4, y: 0.4}
-    _is3dSound: 0
-    _maxDistance: 0
-  - _name: GoUp
-    _clip: {fileID: 8300000, guid: 1c95a1ed7d9b68b40b9434b9d6a2a9ed, type: 3}
-    _volume: 1
-    _looping: 0
-    _pitchVariation: {x: 0.4, y: 0.4}
-    _is3dSound: 0
-    _maxDistance: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf803c5704c3014ba762f1ed68b001a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &531600898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1165,7 @@ MonoBehaviour:
   _timerTransform: {fileID: 531600899}
   _timerMoveUpAmount: 213.3333
   _timerMoveSpeed: 1
+  _timerWarningSeconds: 15
 --- !u!1 &593138131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6425,7 +6373,7 @@ MonoBehaviour:
   _startingText: {fileID: 1119187256}
   _goToDungeonText: {fileID: 1327079186}
   _InDungeonText: {fileID: 1841767695}
-  _startTimerScore: 3
+  _startTimerScore: 2
 --- !u!4 &969680077
 Transform:
   m_ObjectHideFlags: 0
@@ -12024,6 +11972,7 @@ GameObject:
   - component: {fileID: 1538451208}
   - component: {fileID: 1538451210}
   - component: {fileID: 1538451209}
+  - component: {fileID: 1538451211}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -12148,6 +12097,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538451207}
   m_CullTransparentMesh: 1
+--- !u!95 &1538451211
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538451207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01506de6cedee6841b7204b161d8aa3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1615253139
 GameObject:
   m_ObjectHideFlags: 0
@@ -12254,6 +12224,114 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1638435401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638435403}
+  - component: {fileID: 1638435402}
+  - component: {fileID: 1638435404}
+  m_Layer: 0
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1638435402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638435401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d8e2e0d77f157459d6ec8e21148cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camPositionUp: {x: 0, y: 0, z: -10}
+  _camPositionDown: {x: 0, y: -45.02, z: -10}
+  _camPositionMiddle: {x: 0, y: -22.51, z: -10}
+  _movementTime: 3
+  _moveDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1638435404}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GoDown
+          m_BoolArgument: 0
+        m_CallState: 2
+  _moveUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1638435404}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GoUp
+          m_BoolArgument: 0
+        m_CallState: 2
+  _cameraAnimator: {fileID: 519420038}
+--- !u!4 &1638435403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638435401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 519420036}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1638435404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638435401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsToAdd:
+  - _name: GoDown
+    _clip: {fileID: 8300000, guid: e566f75a7a3027247b9bb0310227f887, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 0.4, y: 0.4}
+    _is3dSound: 0
+    _maxDistance: 0
+  - _name: GoUp
+    _clip: {fileID: 8300000, guid: 1c95a1ed7d9b68b40b9434b9d6a2a9ed, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 0.4, y: 0.4}
+    _is3dSound: 0
+    _maxDistance: 0
 --- !u!1 &1664469103
 GameObject:
   m_ObjectHideFlags: 0

@@ -488,7 +488,7 @@ MonoBehaviour:
   _textBox: {fileID: 8494038917072665669}
   _pijltje: {fileID: 7291975989740041553}
   _pijltjeAppearDissapearTime: 0.4
-  _appearDissapearTime: 2
+  _appearDissapearTime: 1
   _texts:
   - {fileID: 9110661218457984519}
   - {fileID: 3969315103036628363}

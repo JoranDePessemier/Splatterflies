@@ -30,11 +30,16 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private UnityEvent _moveUp;
 
+    [SerializeField]
+    private Animator _cameraAnimator;
+
     public bool EnableDownMovement { get; set; } = true;
 
     public event EventHandler<EventArgs> WentToMiddle;
 
     public event EventHandler<EventArgs> WentUpAfterStart;
+
+
 
     private void Awake()
     {
@@ -43,7 +48,13 @@ public class CameraController : MonoBehaviour
         transform.position = _camPositionMiddle;
         _controls.PlayerInput.ChangeScenePressed.performed += ChangePosition;
 
+
         LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => { GlobalVariables.Instance.ScreenState = ScreenType.Top; OnWentUpAfterStart(EventArgs.Empty); });
+    }
+
+    public void ScreenShake()
+    {
+        _cameraAnimator.SetTrigger("ScreenShake");
     }
 
     public void GoToMiddle()
