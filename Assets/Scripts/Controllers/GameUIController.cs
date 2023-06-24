@@ -21,13 +21,12 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private float _timerMoveSpeed;
 
-    private bool _timerIsThere = true;
+    private bool _timerIsThere = false;
 
     private void Awake()
     {
         Vector3 movePosition = new Vector3(0, _timerMoveUpAmount, 0);
         LeanTween.move(_timerTransform, movePosition, 0).setEase(LeanTweenType.easeInCubic);
-        TimerAppears();
     }
 
 
@@ -39,17 +38,22 @@ public class GameUIController : MonoBehaviour
 
 
 
+
         if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere)
         {
             TimerDissapears();
             _timerIsThere = false;
         }
+        else if (GlobalVariables.Instance.CurrentTime >= 0  && GlobalVariables.Instance.TimerStarted && !_timerIsThere)
+        {
+            _timerIsThere = true;
+            TimerAppears();
+        }
     }
 
 
-    public void TimerAppears()
+    private void TimerAppears()
     {
-
         LeanTween.move(_timerTransform, Vector2.zero, _timerMoveSpeed).setEase(LeanTweenType.easeOutCubic);
     }
 

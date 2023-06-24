@@ -53,7 +53,11 @@ public class MainOrderController : MonoBehaviour
 
     private void Update()
     {
-        GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
+        if (GlobalVariables.Instance.TimerStarted)
+        {
+            GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
+        }
+
 
         if(GlobalVariables.Instance.CurrentTime < 0 && _gameOver == false)
         {

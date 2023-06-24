@@ -30,9 +30,11 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private UnityEvent _moveUp;
 
-
+    public bool EnableDownMovement { get; set; } = true;
 
     public event EventHandler<EventArgs> WentToMiddle;
+
+    public event EventHandler<EventArgs> WentUpAfterStart;
 
     private void Awake()
     {
@@ -41,14 +43,14 @@ public class CameraController : MonoBehaviour
         transform.position = _camPositionMiddle;
         _controls.PlayerInput.ChangeScenePressed.performed += ChangePosition;
 
-        LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Top);
+        LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => { GlobalVariables.Instance.ScreenState = ScreenType.Top; OnWentUpAfterStart(EventArgs.Empty); });
     }
 
     public void GoToMiddle()
     {
         GlobalVariables.Instance.ScreenState = ScreenType.Transition;
-        LeanTween.cancel(_camObject);
-        LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime/2).setEase(LeanTweenType.easeInCubic).setOnComplete(() => OnWentToMiddle(EventArgs.Empty));
+        LeanTween.cancel(_camObject);   
+        LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime).setEase(LeanTweenType.easeInCubic).setOnComplete(() => OnWentToMiddle(EventArgs.Empty));
     }
 
     private void ChangePosition(InputAction.CallbackContext obj)
@@ -58,7 +60,7 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
+        if(GlobalVariables.Instance.ScreenState == ScreenType.Top && EnableDownMovement)
         {
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
             _moveDown.Invoke();
@@ -92,6 +94,12 @@ public class CameraController : MonoBehaviour
     private void OnWentToMiddle(EventArgs eventArgs)
     {
         var handler = WentToMiddle;
+        handler?.Invoke(this, eventArgs);
+    }
+
+    private void OnWentUpAfterStart(EventArgs eventArgs)
+    {
+        var handler = WentUpAfterStart;
         handler?.Invoke(this, eventArgs);
     }
 }
