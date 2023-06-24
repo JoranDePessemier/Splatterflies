@@ -103,7 +103,7 @@ public class HookController : MonoBehaviour
 
     private void StartHooking(InputAction.CallbackContext obj)
     {
-        if (_state == GrappleState.OnBase)
+        if (_state == GrappleState.OnBase && _mousePosition.y > _rotatorTransform.position.y)
         {
             StartCoroutine(Utilities.MoveToPoint(_mousePosition,StartReturning, _body, _hookSpeed));
             _state = GrappleState.Grappling;
