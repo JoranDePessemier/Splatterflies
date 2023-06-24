@@ -36,6 +36,11 @@ public class CameraController : MonoBehaviour
 
     private void ChangePosition(InputAction.CallbackContext obj)
     {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
+
         if(GlobalVariables.Instance.ScreenState == ScreenType.Top)
         {
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
