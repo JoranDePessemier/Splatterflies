@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ModifyDifficultyEventArgs : EventArgs
 {
@@ -21,12 +22,19 @@ public class MainOrderController : MonoBehaviour
     [SerializeField]
     private OrderBoardController[] _boards;
 
+    [SerializeField]
+    private UnityEvent _gameOverEvent;
+
     private int _currentDifficultyModifierIndex = -1;
     private DifficultyModifier _currentDifficultyModifier;
 
     public event EventHandler<ModifyDifficultyEventArgs> ModifyDifficulty;
 
     private int _nextThreshold;
+
+    private CameraController _cameraController;
+
+    private bool _gameOver;
 
 
     private void Start()
@@ -39,15 +47,19 @@ public class MainOrderController : MonoBehaviour
         CheckDifficulty();
         ResetBoards();
         GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder;
+
+        _cameraController = FindObjectOfType<CameraController>();   
     }
 
     private void Update()
     {
         GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
 
-        if(GlobalVariables.Instance.CurrentTime < 0)
+        if(GlobalVariables.Instance.CurrentTime < 0 && _gameOver == false)
         {
-
+            _cameraController.GoToMiddle();
+            _gameOverEvent?.Invoke();
+            _gameOver = true;
         }
 
         print(_nextThreshold);
@@ -78,6 +90,12 @@ public class MainOrderController : MonoBehaviour
         {
             _currentDifficultyModifierIndex++;
             _currentDifficultyModifier = _modifiers[_currentDifficultyModifierIndex];
+
+            if(_currentDifficultyModifier.ApearText != null)
+            {
+                _currentDifficultyModifier.ApearText.Appear();
+            }
+
 
             OnModifyDifficulty(new ModifyDifficultyEventArgs(_currentDifficultyModifier));
             

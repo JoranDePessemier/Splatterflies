@@ -60,12 +60,10 @@ public class TextController : MonoBehaviour
         }
 
         _controls = new Controls();
-        _controls.Enable();
         _controls.PlayerInput.ActionPressed.performed += WasClicked;
 
         LeanTween.alpha(_pijltje, 0, 0).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
 
-        Appear();
 
 
 
@@ -142,6 +140,7 @@ public class TextController : MonoBehaviour
     private void AppearCompleted()
     {
         StartCoroutine(ScrollText());
+        _controls.Enable();
     }
 
     private void Dissapear()
@@ -153,5 +152,6 @@ public class TextController : MonoBehaviour
     private void DissapearCompleted()
     {
         Time.timeScale = 1;
+        _controls.Disable();
     }
 }

@@ -1582,7 +1582,7 @@ MonoBehaviour:
   _currentTimeText: {fileID: 1538451209}
   _currentScoreText: {fileID: 1668101444}
   _timerTransform: {fileID: 531600899}
-  _timerMoveUpAmount: 213.33334
+  _timerMoveUpAmount: 213.3333
   _timerMoveSpeed: 1
 --- !u!1 &593138131
 GameObject:
@@ -6894,6 +6894,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937103734}
   m_CullTransparentMesh: 1
+--- !u!1 &969680075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 969680077}
+  - component: {fileID: 969680076}
+  m_Layer: 0
+  m_Name: TutorialController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &969680076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969680075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16d4d7a3cd233e4aa00c88cda2dec25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &969680077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969680075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1006368874 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8373946216612455564, guid: 4a2f14b1d8a99914195ba9ccf31b76dd, type: 3}
@@ -6928,6 +6972,7 @@ GameObject:
   - component: {fileID: 1124453707}
   - component: {fileID: 1124453709}
   - component: {fileID: 1124453710}
+  - component: {fileID: 1124453711}
   m_Layer: 0
   m_Name: ButterflySpawner
   m_TagString: Untagged
@@ -7002,14 +7047,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _modifiers:
   - _modifyMinScore: 0
-    _maxTimePerOrder: 4
+    _maxTimePerOrder: 100
     _maxButterflyAmount: 4
     _butterflyTypeAmount: 1
     _orderAmount: 2
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 1
+    _maxTimePerOrder: 50
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 4
+    _orderAmount: 2
+    _appearText: {fileID: 1213558607}
   _boards:
   - {fileID: 845169669}
   - {fileID: 1006368874}
   - {fileID: 1056047666}
+  _gameOverEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1124453711}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameOver
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1124453711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124453706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsToAdd:
+  - _name: GameOver
+    _clip: {fileID: 8300000, guid: 5a21fe00efbafeb428179640b0c8599e, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 1, y: 1}
+    _is3dSound: 0
+    _maxDistance: 0
 --- !u!1 &1213558602
 GameObject:
   m_ObjectHideFlags: 0
@@ -7030,7 +7117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1213558603
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,6 +30,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private UnityEvent _moveUp;
 
+
+
     public event EventHandler<EventArgs> WentToMiddle;
 
     private void Awake()
@@ -45,6 +47,7 @@ public class CameraController : MonoBehaviour
     public void GoToMiddle()
     {
         GlobalVariables.Instance.ScreenState = ScreenType.Transition;
+        LeanTween.cancel(_camObject);
         LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime/2).setEase(LeanTweenType.easeInCubic).setOnComplete(() => OnWentToMiddle(EventArgs.Empty));
     }
 

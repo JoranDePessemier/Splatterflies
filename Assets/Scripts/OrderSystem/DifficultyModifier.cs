@@ -20,10 +20,15 @@ public class DifficultyModifier
     [SerializeField]
     private int _orderAmount;
 
+    [SerializeField]
+    private TextController _appearText;
+
     public int ModifyMinScore => _modifyMinScore;
     public float MaxTimePerOrder => _maxTimePerOrder;
     public int MaxButterflyAmount => _maxButterflyAmount;
     public int ButterflyTypeAmount => _butterflyTypeAmount;
     public int OrderAmount => _orderAmount;
+
+    public TextController ApearText => _appearText;
 
 }

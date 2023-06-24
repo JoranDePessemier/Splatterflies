@@ -17,4 +17,8 @@ public class GlobalVariables : Singleton<GlobalVariables>
     public int CompletedOrders { get; set; }
 
     public float CurrentTime { get; set; }
+
+    public bool GameOver { get; set; }
+
+    public bool  GameComplete { get; set; } 
 }
