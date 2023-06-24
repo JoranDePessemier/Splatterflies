@@ -16,6 +16,12 @@ public class TextController : MonoBehaviour
     RectTransform _textBox;
 
     [SerializeField]
+    private RectTransform _pijltje;
+
+    [SerializeField]
+    private float _pijltjeAppearDissapearTime;
+
+    [SerializeField]
     private float _appearDissapearTime;
 
     [SerializeField]
@@ -28,6 +34,10 @@ public class TextController : MonoBehaviour
 
     [SerializeField]
     private UnityEvent _characterAppears;
+
+    [SerializeField]
+    private UnityEvent _textClicked;
+
 
 
 
@@ -49,11 +59,15 @@ public class TextController : MonoBehaviour
             text.maxVisibleCharacters = 0;
         }
 
-        Appear();
-
         _controls = new Controls();
         _controls.Enable();
         _controls.PlayerInput.ActionPressed.performed += WasClicked;
+
+        LeanTween.alpha(_pijltje, 0, 0).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
+
+        Appear();
+
+
 
     }
 
@@ -97,6 +111,9 @@ public class TextController : MonoBehaviour
 
     private void TextClicked()
     {
+        _textClicked.Invoke();
+
+        LeanTween.alpha(_pijltje, 0, _pijltjeAppearDissapearTime).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
         _texts[_currentTextIndex].maxVisibleCharacters = 0;
         _currentTextIndex++;
 
@@ -112,6 +129,7 @@ public class TextController : MonoBehaviour
 
     private void ScrollingCompleted()
     {
+        LeanTween.alpha(_pijltje, 1, _pijltjeAppearDissapearTime).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
     }
 
     public void Appear()
