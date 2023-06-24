@@ -12,7 +12,7 @@ public enum ScreenType
 
 public class GlobalVariables : Singleton<GlobalVariables>
 {
-    public ScreenType ScreenState { get; set; }
+    public ScreenType ScreenState { get; set; } = ScreenType.Transition;
 
     public int CompletedOrders { get; set; }
 

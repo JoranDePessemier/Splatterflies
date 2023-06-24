@@ -19,6 +19,9 @@ public class CameraController : MonoBehaviour
     private Vector3 _camPositionDown;
 
     [SerializeField]
+    private Vector3 _camPositionMiddle;
+
+    [SerializeField]
     private float _movementTime;
 
     [SerializeField]
@@ -27,11 +30,22 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private UnityEvent _moveUp;
 
+    public event EventHandler<EventArgs> WentToMiddle;
+
     private void Awake()
     {
         _camObject = this.gameObject;
         _controls = new Controls();
+        transform.position = _camPositionMiddle;
         _controls.PlayerInput.ChangeScenePressed.performed += ChangePosition;
+
+        LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Top);
+    }
+
+    public void GoToMiddle()
+    {
+        GlobalVariables.Instance.ScreenState = ScreenType.Transition;
+        LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime/2).setEase(LeanTweenType.easeInCubic).setOnComplete(() => OnWentToMiddle(EventArgs.Empty));
     }
 
     private void ChangePosition(InputAction.CallbackContext obj)
@@ -69,5 +83,12 @@ public class CameraController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(_camPositionDown,_camPositionUp);
+        Gizmos.DrawIcon(_camPositionMiddle,"stupd");
+    }
+
+    private void OnWentToMiddle(EventArgs eventArgs)
+    {
+        var handler = WentToMiddle;
+        handler?.Invoke(this, eventArgs);
     }
 }

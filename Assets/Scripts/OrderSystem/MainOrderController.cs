@@ -45,6 +45,11 @@ public class MainOrderController : MonoBehaviour
     {
         GlobalVariables.Instance.CurrentTime -= Time.deltaTime;
 
+        if(GlobalVariables.Instance.CurrentTime < 0)
+        {
+
+        }
+
         print(_nextThreshold);
     }
 
