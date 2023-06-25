@@ -256,7 +256,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.27658844
+        value: 0.12056732
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -658,7 +658,7 @@ Transform:
   - {fileID: 3349294408429785668}
   - {fileID: 5180383514971266346}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3702217296571655142
 GameObject:
