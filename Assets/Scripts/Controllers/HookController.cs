@@ -38,6 +38,16 @@ public class HookController : MonoBehaviour
     private SpriteRenderer _sprite;
 
     [SerializeField]
+    private GameObject _aimingReticle;
+
+    [SerializeField]
+    private float _reticleIncreaseAmount;
+
+    [SerializeField]
+    private float _reticleAppearDissapearTime;
+
+
+    [SerializeField]
     private UnityEvent _grappled;
 
     [SerializeField]
@@ -45,6 +55,9 @@ public class HookController : MonoBehaviour
 
     [SerializeField]
     private UnityEvent _returnToWell;
+
+
+    private Transform _aimingReticleTransform;
 
 
     private GrappleState _state = GrappleState.OnBase;
@@ -55,6 +68,10 @@ public class HookController : MonoBehaviour
         _controls = new Controls();
         _controls.PlayerInput.ActionPressed.performed += StartHooking;
         _mainCam = Camera.main;
+        _aimingReticleTransform = _aimingReticle.transform;
+
+        LeanTween.alpha(_aimingReticle, 0, 0);
+        LeanTween.scale(_aimingReticle, _reticleIncreaseAmount * Vector3.one, 0);
     }
 
     private void OnEnable()
@@ -108,17 +125,32 @@ public class HookController : MonoBehaviour
             StartCoroutine(Utilities.MoveToPoint(_mousePosition,StartReturning, _body, _hookSpeed));
             _state = GrappleState.Grappling;
             _StartGrappling.Invoke();
+
+            _reticleAppear();
         }
+    }
+
+    private void _reticleAppear()
+    {
+        _aimingReticleTransform.position = _mousePosition;
+        LeanTween.alpha(_aimingReticle,1,_reticleAppearDissapearTime).setEase(LeanTweenType.easeInCubic);
+        LeanTween.scale(_aimingReticle, Vector3.one, _reticleAppearDissapearTime).setEase(LeanTweenType.easeInCubic);
     }
 
     private void StartReturning()
     {
         _state = GrappleState.Returning;
+        ReticleDissapear();
         StartCoroutine(Utilities.MoveToPoint(_rotatorTransform.position, () => { _state = GrappleState.OnBase; _returnToWell.Invoke(); },_body,_hookSpeed));
 
     }
 
-
+    private void ReticleDissapear()
+    {
+        LeanTween.cancel(_aimingReticle);
+        LeanTween.alpha(_aimingReticle, 0, _reticleAppearDissapearTime).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.scale(_aimingReticle, Vector3.one * _reticleIncreaseAmount, _reticleAppearDissapearTime).setEase(LeanTweenType.easeOutCubic);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
