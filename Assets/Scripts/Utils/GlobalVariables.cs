@@ -25,4 +25,6 @@ public class GlobalVariables : Singleton<GlobalVariables>
     public bool  GameComplete { get; set; }
 
     public bool TimerStarted { get; set; } = true;
+
+    public bool EndlessMode { get; set; }
 }
