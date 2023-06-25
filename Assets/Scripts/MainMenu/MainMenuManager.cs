@@ -83,6 +83,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame(bool _isEndless)
     {
+        State = MenuState.StartGame;
         LeanTween.cancel(_camObject);
         LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime / 2).setEase(LeanTweenType.easeInCubic).setOnComplete(() => GoToGameScene(_isEndless));
     }

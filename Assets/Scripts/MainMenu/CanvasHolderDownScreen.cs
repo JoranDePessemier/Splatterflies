@@ -21,7 +21,7 @@ public class CanvasHolderDownScreen : MonoBehaviour
 
     private void Update()
     {
-        if(_menuManager.State == _visibleState || (_isVisible && _menuManager.State == MenuState.Main))
+        if (_menuManager.State == _visibleState || (_isVisible && (_menuManager.State == MenuState.Main || _menuManager.State == MenuState.StartGame)))
         {
             _isVisible = true;
             _child.SetActive(true);
