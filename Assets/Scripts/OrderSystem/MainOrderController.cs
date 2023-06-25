@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ModifyDifficultyEventArgs : EventArgs
 {
@@ -24,6 +25,9 @@ public class MainOrderController : MonoBehaviour
 
     [SerializeField]
     private UnityEvent _gameOverEvent;
+
+    [SerializeField]
+    private string _mainMenuScene;
 
     private int _currentDifficultyModifierIndex = -1;
     private DifficultyModifier _currentDifficultyModifier;
@@ -61,16 +65,19 @@ public class MainOrderController : MonoBehaviour
 
         if(GlobalVariables.Instance.CurrentTime < 0 && _gameOver == false)
         {
-            _cameraController.GoToMiddle();
+            _cameraController.GoToMiddle(() => { SceneManager.LoadScene(_mainMenuScene); });
             _gameOverEvent?.Invoke();
             _gameOver = true;
+            GlobalVariables.Instance.GameOver = true;
         }
-
-        print(_nextThreshold);
     }
 
     private void Board_OrderCompleted(object sender, EventArgs e)
     {
+        if (GlobalVariables.Instance.CurrentTime < 0)
+        {
+            return;
+        }
         GlobalVariables.Instance.CompletedOrders++;
         CheckDifficulty();
         ResetBoards();

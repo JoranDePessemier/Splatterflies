@@ -1338,7 +1338,7 @@ MonoBehaviour:
   _startingText: {fileID: 1119187256}
   _goToDungeonText: {fileID: 1327079186}
   _InDungeonText: {fileID: 1841767695}
-  _startTimerScore: 2
+  _startTimerScore: 0
 --- !u!4 &969680077
 Transform:
   m_ObjectHideFlags: 0
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _modifiers:
   - _modifyMinScore: 0
-    _maxTimePerOrder: 100
+    _maxTimePerOrder: 2
     _maxButterflyAmount: 4
     _butterflyTypeAmount: 1
     _orderAmount: 2
@@ -1605,6 +1605,7 @@ MonoBehaviour:
           m_StringArgument: GameOver
           m_BoolArgument: 0
         m_CallState: 2
+  _mainMenuScene: MenuScene
 --- !u!114 &1124453711
 MonoBehaviour:
   m_ObjectHideFlags: 0

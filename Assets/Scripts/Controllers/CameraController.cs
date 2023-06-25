@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -35,8 +36,6 @@ public class CameraController : MonoBehaviour
 
     public bool EnableDownMovement { get; set; } = true;
 
-    public event EventHandler<EventArgs> WentToMiddle;
-
     public event EventHandler<EventArgs> WentUpAfterStart;
 
 
@@ -57,11 +56,11 @@ public class CameraController : MonoBehaviour
         _cameraAnimator.SetTrigger("ScreenShake");
     }
 
-    public void GoToMiddle()
+    public void GoToMiddle(Action completedAction)
     {
         GlobalVariables.Instance.ScreenState = ScreenType.Transition;
         LeanTween.cancel(_camObject);   
-        LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime).setEase(LeanTweenType.easeInCubic).setOnComplete(() => OnWentToMiddle(EventArgs.Empty));
+        LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime).setEase(LeanTweenType.easeInCubic).setOnComplete(completedAction);
     }
 
     private void ChangePosition(InputAction.CallbackContext obj)
@@ -102,11 +101,6 @@ public class CameraController : MonoBehaviour
         Gizmos.DrawIcon(_camPositionMiddle,"stupd");
     }
 
-    private void OnWentToMiddle(EventArgs eventArgs)
-    {
-        var handler = WentToMiddle;
-        handler?.Invoke(this, eventArgs);
-    }
 
     private void OnWentUpAfterStart(EventArgs eventArgs)
     {

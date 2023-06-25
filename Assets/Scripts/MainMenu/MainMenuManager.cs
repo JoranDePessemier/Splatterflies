@@ -55,7 +55,7 @@ public class MainMenuManager : MonoBehaviour
         _camObject = this.gameObject;
         transform.position = _camPositionMiddle;
 
-        if(!GlobalVariables.Instance.GameComplete || GlobalVariables.Instance.GameOver)
+        if(!(GlobalVariables.Instance.GameComplete || GlobalVariables.Instance.GameOver))
         {
             LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic);
         }
@@ -108,5 +108,19 @@ public class MainMenuManager : MonoBehaviour
             GlobalVariables.Instance.EndlessMode = false;
             SceneManager.LoadScene(_storyGameScene);
         }
+    }
+
+    public void GoToMainMenu()
+    {
+        LeanTween.cancel(_camObject);
+        LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic);
+        State = MenuState.Main;
+    }
+
+    public void GoToAbout()
+    {
+        LeanTween.cancel(_camObject);
+        LeanTween.moveLocal(_camObject, _camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic);
+        State = MenuState.About;
     }
 }
