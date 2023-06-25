@@ -27,7 +27,14 @@ public class MainOrderController : MonoBehaviour
     private UnityEvent _gameOverEvent;
 
     [SerializeField]
+    private UnityEvent _gameCompleteEvent;
+
+    [SerializeField]
     private string _mainMenuScene;
+
+    [SerializeField]
+    [Tooltip("Only applicable if the game is in story mode!")]
+    private int _completeGameThreshold;
 
     private int _currentDifficultyModifierIndex = -1;
     private DifficultyModifier _currentDifficultyModifier;
@@ -69,6 +76,14 @@ public class MainOrderController : MonoBehaviour
             _gameOverEvent?.Invoke();
             _gameOver = true;
             GlobalVariables.Instance.GameOver = true;
+        }
+
+        if(!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.CompletedOrders >= _completeGameThreshold && GlobalVariables.Instance.CurrentTime > 0 && _gameOver == false)
+        {
+            _gameOver = true;
+            _cameraController.GoToMiddle(() => { SceneManager.LoadScene(_mainMenuScene); });
+            GlobalVariables.Instance.GameComplete = true;
+            _gameCompleteEvent?.Invoke();   
         }
     }
 

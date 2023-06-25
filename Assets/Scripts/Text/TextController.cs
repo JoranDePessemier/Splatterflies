@@ -48,6 +48,7 @@ public class TextController : MonoBehaviour
     private void Awake()
     {
         Image backImage = _backGround.GetComponent<Image>();
+        _backGround.gameObject.SetActive(false);
 
         _endAlphaBackground = backImage.color.a;
         backImage.color = new Color(backImage.color.r, backImage.color.g, backImage.color.b, 0);
@@ -85,7 +86,7 @@ public class TextController : MonoBehaviour
 
             if(_isClicked )
             {
-                textObject.maxVisibleCharacters = textObject.text.Length - 1;
+                textObject.maxVisibleCharacters = textObject.text.Length;
                 _isClicked = false;
                 break;
             }
@@ -132,6 +133,7 @@ public class TextController : MonoBehaviour
 
     public void Appear()
     {
+        _backGround.gameObject.SetActive(true);
         Time.timeScale = 0;
         LeanTween.alpha(_backGround,_endAlphaBackground ,_appearDissapearTime).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
         LeanTween.scale(_textBox, Vector2.one, _appearDissapearTime).setEase(LeanTweenType.easeOutBack).setOnComplete(AppearCompleted).setIgnoreTimeScale(true); 
@@ -152,6 +154,7 @@ public class TextController : MonoBehaviour
     private void DissapearCompleted()
     {
         Time.timeScale = 1;
+        _backGround.gameObject.SetActive(false);
         _controls.Disable();
     }
 }

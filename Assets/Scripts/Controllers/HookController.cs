@@ -70,8 +70,13 @@ public class HookController : MonoBehaviour
         _mainCam = Camera.main;
         _aimingReticleTransform = _aimingReticle.transform;
 
-        LeanTween.alpha(_aimingReticle, 0, 0);
-        LeanTween.scale(_aimingReticle, _reticleIncreaseAmount * Vector3.one, 0);
+
+    }
+
+    private void Start()
+    {
+        LeanTween.alpha(_aimingReticle, 0, 0.01f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true); 
+        LeanTween.scale(_aimingReticle, _reticleIncreaseAmount * Vector3.one, 0).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
     }
 
     private void OnEnable()
@@ -126,11 +131,11 @@ public class HookController : MonoBehaviour
             _state = GrappleState.Grappling;
             _StartGrappling.Invoke();
 
-            _reticleAppear();
+            ReticleAppear();
         }
     }
 
-    private void _reticleAppear()
+    private void ReticleAppear()
     {
         _aimingReticleTransform.position = _mousePosition;
         LeanTween.alpha(_aimingReticle,1,_reticleAppearDissapearTime).setEase(LeanTweenType.easeInCubic);

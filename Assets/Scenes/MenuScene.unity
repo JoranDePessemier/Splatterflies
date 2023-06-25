@@ -701,8 +701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 13.03, y: 3.1}
+  m_AnchoredPosition: {x: 0, y: 1.32}
+  m_SizeDelta: {x: 15.04, y: 3.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &334415113
 MonoBehaviour:
@@ -724,7 +724,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You completed ### orders.
+  m_text: You now own the store. Try out endless mode and see how many orders you
+    can complete!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
   m_sharedMaterial: {fileID: -4641649323685441939, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
@@ -811,7 +812,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: _selectableState
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: _clickedScene.m_PersistentCalls.m_Calls.Array.size
@@ -838,12 +839,16 @@ PrefabInstance:
       value: MainMenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
+      propertyPath: _clickedScene.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: _clickedScene.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1401704096558999721, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: m_text
-      value: Retry
+      value: Endless
       objectReference: {fileID: 0}
     - target: {fileID: 1401704096558999721, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: m_fontSizeBase
@@ -851,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2761237598825389268, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: m_Name
-      value: RetryButton
+      value: EndlessButton
       objectReference: {fileID: 0}
     - target: {fileID: 5235741689889247007, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: m_Pivot.x
@@ -997,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game over
+  m_text: Nicely done!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
   m_sharedMaterial: {fileID: -4641649323685441939, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
@@ -1224,7 +1229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: _selectableState
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4311141976103970671, guid: 9ae221546acda59478e5722f58361480, type: 3}
       propertyPath: _clickedScene.m_PersistentCalls.m_Calls.Array.size
@@ -2181,7 +2186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1258288820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,7 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a90a36c593b0774b91a786776ba17e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visibleState: 4
+  _visibleState: 5
 --- !u!4 &1258288821
 Transform:
   m_ObjectHideFlags: 0
