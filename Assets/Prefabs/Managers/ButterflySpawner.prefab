@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5596944423432421756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6057580432062268357}
+  - component: {fileID: 5931072519203692658}
+  - component: {fileID: 3730452701078386609}
+  - component: {fileID: 3592923287719509272}
+  - component: {fileID: 7006918481443543465}
+  m_Layer: 0
+  m_Name: ButterflySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6057580432062268357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596944423432421756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5931072519203692658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596944423432421756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140c1bd19da704d479b50bc4975b8ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startXYSpawnArea: {x: -11, y: -1.13}
+  _endXYSpawnArea: {x: 11, y: 4}
+  _spawnObjects:
+  - {fileID: 875900527507099509, guid: 085345569a76ebe4d806c774af62c1a4, type: 3}
+  - {fileID: 2710888521323705296, guid: 40382b3e6cd6c5f488d2ba691a35658d, type: 3}
+  - {fileID: 3984361573967019536, guid: 74726ed0470630247bfbd8308163e7f6, type: 3}
+  - {fileID: 5858080804984685342, guid: 9c75216523ae5d240aabcd3426314c1a, type: 3}
+  _amountPerButterfly: 3
+--- !u!114 &3730452701078386609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596944423432421756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b160d4beb7ade3449a7e817e76dc78f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnObjects:
+  - {fileID: 3507395332947811047, guid: c0084e27e81c1a54db125d734d5111dd, type: 3}
+  - {fileID: 6949961722881529325, guid: c0a0ac5462d797d40bd6438ac19350dc, type: 3}
+  - {fileID: 7750048550977786486, guid: c4cb6a61617006e428df401b31290678, type: 3}
+  - {fileID: 6050562740822761623, guid: 25387c576f92a3d4da2e78d97c6b62db, type: 3}
+  _butterflySpawnPoint: {x: 0, y: -45.02}
+--- !u!114 &3592923287719509272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596944423432421756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d462c7f0a38ddc2439ae6f518880848c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modifiers:
+  - _modifyMinScore: 0
+    _maxTimePerOrder: 80
+    _maxButterflyAmount: 1
+    _butterflyTypeAmount: 1
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 1
+    _maxTimePerOrder: 80
+    _maxButterflyAmount: 2
+    _butterflyTypeAmount: 1
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 3
+    _maxTimePerOrder: 80
+    _maxButterflyAmount: 2
+    _butterflyTypeAmount: 2
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 6
+    _maxTimePerOrder: 80
+    _maxButterflyAmount: 3
+    _butterflyTypeAmount: 2
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 10
+    _maxTimePerOrder: 60
+    _maxButterflyAmount: 3
+    _butterflyTypeAmount: 2
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 15
+    _maxTimePerOrder: 60
+    _maxButterflyAmount: 3
+    _butterflyTypeAmount: 3
+    _orderAmount: 1
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 20
+    _maxTimePerOrder: 50
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 3
+    _orderAmount: 2
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 25
+    _maxTimePerOrder: 50
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 4
+    _orderAmount: 2
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 30
+    _maxTimePerOrder: 45
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 4
+    _orderAmount: 2
+    _appearText: {fileID: 0}
+  - _modifyMinScore: 35
+    _maxTimePerOrder: 40
+    _maxButterflyAmount: 4
+    _butterflyTypeAmount: 4
+    _orderAmount: 2
+    _appearText: {fileID: 0}
+  _boards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _gameOverEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7006918481443543465}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameOver
+          m_BoolArgument: 0
+        m_CallState: 2
+  _gameCompleteEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7006918481443543465}
+        m_TargetAssemblyTypeName: LocalAudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameComplete
+          m_BoolArgument: 0
+        m_CallState: 2
+  _mainMenuScene: MenuScene
+  _completeGameThreshold: 35
+--- !u!114 &7006918481443543465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596944423432421756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsToAdd:
+  - _name: GameOver
+    _clip: {fileID: 8300000, guid: 5a21fe00efbafeb428179640b0c8599e, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 1, y: 1}
+    _is3dSound: 0
+    _maxDistance: 0
+  - _name: GameComplete
+    _clip: {fileID: 8300000, guid: 0256c6fac7dea6e41ac45cf384d82fd2, type: 3}
+    _volume: 1
+    _looping: 0
+    _pitchVariation: {x: 1, y: 1}
+    _is3dSound: 0
+    _maxDistance: 0

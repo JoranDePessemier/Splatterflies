@@ -76,6 +76,11 @@ public class MainOrderController : MonoBehaviour
             _gameOverEvent?.Invoke();
             _gameOver = true;
             GlobalVariables.Instance.GameOver = true;
+
+            if(!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.HighScore < GlobalVariables.Instance.CompletedOrders)
+            {
+                GlobalVariables.Instance.HighScore = GlobalVariables.Instance.CompletedOrders;
+            }
         }
 
         if(!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.CompletedOrders >= _completeGameThreshold && GlobalVariables.Instance.CurrentTime > 0 && _gameOver == false)
@@ -96,7 +101,7 @@ public class MainOrderController : MonoBehaviour
         GlobalVariables.Instance.CompletedOrders++;
         CheckDifficulty();
         ResetBoards();
-        GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder;
+        GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder + 1;
     }
 
     private void ResetBoards()
