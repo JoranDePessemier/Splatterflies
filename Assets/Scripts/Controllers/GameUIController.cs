@@ -58,12 +58,12 @@ public class GameUIController : MonoBehaviour
         }
 
 
-        if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere || (!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.GameComplete))
+        if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere || (!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.GameComplete && _timerIsThere))
         {
             TimerDissapears();
             _timerIsThere = false;
         }
-        else if (GlobalVariables.Instance.CurrentTime >= 0  && GlobalVariables.Instance.TimerStarted && !_timerIsThere)
+        else if (GlobalVariables.Instance.CurrentTime >= 0  && GlobalVariables.Instance.TimerStarted && !_timerIsThere && !GlobalVariables.Instance.GameComplete)
         {
             _timerIsThere = true;
             TimerAppears();

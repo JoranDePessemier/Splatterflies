@@ -19,12 +19,16 @@ public class CursorController : MonoBehaviour
         _transform = this.transform;
         _controls = new Controls();
         _controls.Enable();
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+
         _controls.PlayerInput.ActionPressed.performed += CursorClicked;
     }
 
     private void CursorClicked(InputAction.CallbackContext obj)
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         _clicked.Invoke();
     }
 
