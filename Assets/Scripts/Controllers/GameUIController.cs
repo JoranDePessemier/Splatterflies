@@ -58,7 +58,7 @@ public class GameUIController : MonoBehaviour
         }
 
 
-        if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere)
+        if(GlobalVariables.Instance.CurrentTime < 0 && _timerIsThere || (!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.GameComplete))
         {
             TimerDissapears();
             _timerIsThere = false;
