@@ -9055,7 +9055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The name\u2019s Sebastian the spider, and I own this shop."
+  m_text: "The name\u2019s Sebastian the spider and I own this shop."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
   m_sharedMaterial: {fileID: -4641649323685441939, guid: 00dc9eac4111edc46b30dad5c04ce097, type: 2}
