@@ -59,7 +59,7 @@ public class MainOrderController : MonoBehaviour
         ResetBoards();
         GlobalVariables.Instance.CurrentTime = _currentDifficultyModifier.MaxTimePerOrder;
 
-        _cameraController = FindObjectOfType<CameraController>();   
+        _cameraController = FindObjectOfType<CameraController>();
     }
 
     private void Update()
@@ -77,6 +77,8 @@ public class MainOrderController : MonoBehaviour
             _gameOver = true;
             GlobalVariables.Instance.GameOver = true;
 
+            MusicManager.Instance.StopAllMusic();
+
             if(!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.HighScore < GlobalVariables.Instance.CompletedOrders)
             {
                 GlobalVariables.Instance.HighScore = GlobalVariables.Instance.CompletedOrders;
@@ -88,7 +90,8 @@ public class MainOrderController : MonoBehaviour
             _gameOver = true;
             _cameraController.GoToMiddle(() => { SceneManager.LoadScene(_mainMenuScene); });
             GlobalVariables.Instance.GameComplete = true;
-            _gameCompleteEvent?.Invoke();   
+            _gameCompleteEvent?.Invoke();
+            MusicManager.Instance.StopAllMusic();
         }
     }
 

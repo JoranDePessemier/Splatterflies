@@ -86,4 +86,16 @@ public class MusicManager : MonoBehaviour
             yield return 0;
         }
     }
+
+    internal void StopAllMusic()
+    {
+        foreach(Music music in _musicInGame)
+        {
+            if (music.source.isPlaying)
+            {
+                music.source.volume = 0;
+            }
+    
+        }
+    }
 }
