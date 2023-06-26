@@ -18,7 +18,9 @@ public class FlyingButterflySpawner : MonoBehaviour
     [SerializeField]
     private float _amountPerButterfly = 3;
 
-    private int _currentButterflySpawnAmount;
+    private List<int> _amountPerSpawnObject = new List<int>();
+
+    private int _currentButterflySpawnAmount; 
 
     DungeonButterflySpawner _dungeonSpawner;
     MainOrderController _mainOrderController;
@@ -27,9 +29,14 @@ public class FlyingButterflySpawner : MonoBehaviour
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
     private void Awake()
     {
+        foreach(BaseButterflyFlying b in _spawnObjects)
+        {
+            _amountPerSpawnObject.Add(0);
+        }
         _dungeonSpawner = this.GetComponent<DungeonButterflySpawner>();
         _mainOrderController = this.GetComponent<MainOrderController>();
         _mainOrderController.ModifyDifficulty += ModifySpawningButterflies;
+
     }
 
     private void ModifySpawningButterflies(object sender, ModifyDifficultyEventArgs e)
@@ -50,14 +57,25 @@ public class FlyingButterflySpawner : MonoBehaviour
 
     public void SpawnButterfly(ButterflyType type)
     {
-        Transform flyTransform = _spawnObjects[_spawnTypes.IndexOf(type)].transform;
+        int spawnIndex = _spawnTypes.IndexOf(type);
+
+        if (_amountPerSpawnObject[spawnIndex] >= _amountPerButterfly)
+        {
+            return;
+        }
+
+        Transform flyTransform = _spawnObjects[spawnIndex].transform;
+
+        _amountPerSpawnObject[spawnIndex]++;
 
         Vector2 spawnPoint = DetermineSpawnPoint();
 
         BaseButterflyFlying spawnedFly = GameObject.Instantiate(flyTransform, spawnPoint, flyTransform.rotation).GetComponent<BaseButterflyFlying>();
         spawnedFly.LeftScene += (s, e) => SpawnButterfly(e.Type);
-
         spawnedFly.WasCaught += _dungeonSpawner.SpawnButterfly;
+
+        spawnedFly.WasCaught += (s,e) => _amountPerSpawnObject[spawnIndex]--;
+        spawnedFly.LeftScene += (s, e) => _amountPerSpawnObject[spawnIndex]--;
     }
 
     private Vector2 DetermineSpawnPoint()
