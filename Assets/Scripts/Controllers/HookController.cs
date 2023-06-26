@@ -117,6 +117,10 @@ public class HookController : MonoBehaviour
         {
             _rotatorTransform.up = _mousePosition - (Vector2)_rotatorTransform.position;
         }
+        if(_state == GrappleState.Grappling)
+        {
+            _rotatorTransform.up = _aimingReticleTransform.position - (Vector3)_rotatorTransform.position;
+        }
 
 
         _lineRenderer.SetPosition(0, _rotatorTransform.position);
