@@ -46,6 +46,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private string _storyGameScene;
 
+    [SerializeField]
+    private float _musicFadeSpeed;
+
     public MenuState State { get; private set; }
 
     private void Awake()
@@ -58,6 +61,9 @@ public class MainMenuManager : MonoBehaviour
         if(!(GlobalVariables.Instance.GameComplete || GlobalVariables.Instance.GameOver))
         {
             LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime / 2).setEase(LeanTweenType.easeOutCubic);
+
+            MusicManager.Instance.StartFadeIn("Neutral", _musicFadeSpeed);
+            MusicManager.Instance.StartFadeIn("GardenBody", _musicFadeSpeed);
         }
         else
         {
@@ -86,6 +92,10 @@ public class MainMenuManager : MonoBehaviour
         State = MenuState.StartGame;
         LeanTween.cancel(_camObject);
         LeanTween.moveLocal(_camObject, _camPositionMiddle, _movementTime / 2).setEase(LeanTweenType.easeInCubic).setOnComplete(() => GoToGameScene(_isEndless));
+        MusicManager.Instance.StartFadeIn("GardenBody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeIn("GardenMelody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeOut("DungeonBody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeIn("Neutral", _musicFadeSpeed);
     }
 
     private void GoToGameScene(bool isEndless)
@@ -98,7 +108,8 @@ public class MainMenuManager : MonoBehaviour
         GlobalVariables.Instance.TimerStarted = true;
 
 
-        if(isEndless)
+
+        if (isEndless)
         {
             GlobalVariables.Instance.EndlessMode = true;
             SceneManager.LoadScene(_endlessGameScene);
@@ -116,6 +127,11 @@ public class MainMenuManager : MonoBehaviour
         LeanTween.cancel(_camObject);
         LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic);
         State = MenuState.Main;
+
+        MusicManager.Instance.StartFadeIn("GardenBody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeOut("DungeonBody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeIn("Neutral", _musicFadeSpeed);
+
     }
 
     public void GoToAbout()
@@ -123,5 +139,7 @@ public class MainMenuManager : MonoBehaviour
         LeanTween.cancel(_camObject);
         LeanTween.moveLocal(_camObject, _camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic);
         State = MenuState.About;
+        MusicManager.Instance.StartFadeIn("DungeonBody", _musicFadeSpeed);
+        MusicManager.Instance.StartFadeOut("GardenBody", _musicFadeSpeed);
     }
 }

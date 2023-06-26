@@ -140,7 +140,7 @@ Transform:
   - {fileID: 3760009434363634883}
   - {fileID: 1851179563960292655}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5128731462033057674
 BoxCollider2D:
@@ -203,7 +203,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _typeToHold: 2
-  _activationTime: 5
+  _activationTime: 3
   _launchTransform: {fileID: 1851179563960292655}
   _launchForce: 10
   _close:

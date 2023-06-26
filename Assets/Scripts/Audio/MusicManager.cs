@@ -8,18 +8,8 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    private Music _currentPlayingMusic;
-
-    private Music _previousPlayingMusic;
-
     [SerializeField]
     private Music[] _musicInGame;
-
-    [SerializeField]
-    private Music _menuMusic;
-
-    [SerializeField]
-    private float _fadeSpeed;
 
     private void Awake()
     {
@@ -32,17 +22,13 @@ public class MusicManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-    }
 
-    private void Start()
-    {
         foreach (var music in _musicInGame)
         {
             CreateSource(music);
+            music.source.Play();
+            music.source.volume = 0;
         }
-        CreateSource(_menuMusic);
-        _menuMusic.source.Play();
-        _currentPlayingMusic = _menuMusic;
     }
 
     private void CreateSource(Music music)
@@ -54,59 +40,49 @@ public class MusicManager : MonoBehaviour
         music.source.loop = music.Looping;
     }
 
-    public void StartNewSong() => StartNewSong(false);
-
-    public void StartNewSong(bool menuMusic)
+    public void StartFadeIn(string name,float fadeSpeed)
     {
-        _previousPlayingMusic = _currentPlayingMusic;
+        Music neededMusic = FindMusicByName(name);
 
-        StopCoroutine(CountToNewSong());
+        StartCoroutine(FadeIn(neededMusic, fadeSpeed));
+    }
 
-        if(!menuMusic)
+    public void StartFadeOut(string name, float fadeSpeed)
+    {
+        Music neededMusic = FindMusicByName(name);
+
+        StartCoroutine(FadeOut(neededMusic, fadeSpeed));
+    }
+
+    private Music FindMusicByName(string name)
+    {
+        Music neededMusic = new Music();
+
+        foreach (Music music in _musicInGame)
         {
-            while (_currentPlayingMusic == _previousPlayingMusic)
+            if (music.Name == name)
             {
-                _currentPlayingMusic = _musicInGame[UnityEngine.Random.Range(0, _musicInGame.Length)];
+                neededMusic = music;
             }
-            StartCoroutine(CountToNewSong());
-        }
-        else
-        {
-            _currentPlayingMusic = _menuMusic;
         }
 
-
-        StartCoroutine(FadeIn(_currentPlayingMusic));
-        if(_previousPlayingMusic != null)
-        {
-            StartCoroutine(FadeOut(_previousPlayingMusic));
-        }
-
+        return neededMusic;
     }
 
-    private IEnumerator CountToNewSong()
-    {
-        yield return new WaitForSecondsRealtime(_currentPlayingMusic.EndTimeSeconds);
-        StartNewSong();
-    }
-
-    private IEnumerator FadeOut(Music music)
+    private  IEnumerator FadeOut(Music music, float fadeSpeed)
     {
         while(music.source.volume > 0)
         {
-            music.source.volume = Mathf.MoveTowards(music.source.volume,0, _fadeSpeed * Time.unscaledDeltaTime);
+            music.source.volume = Mathf.MoveTowards(music.source.volume,0, fadeSpeed * Time.unscaledDeltaTime);
             yield return 0;
         }
-        music.source.Stop();
     }
 
-    private IEnumerator FadeIn(Music music)
+    private  IEnumerator FadeIn(Music music, float fadeSpeed)
     {
-        music.source.Play();
-        music.source.volume = 0;
         while (music.source.volume < music.Volume)
         {
-            music.source.volume = Mathf.MoveTowards(music.source.volume, music.Volume, _fadeSpeed * Time.unscaledDeltaTime);
+            music.source.volume = Mathf.MoveTowards(music.source.volume, music.Volume, fadeSpeed * Time.unscaledDeltaTime);
             yield return 0;
         }
     }

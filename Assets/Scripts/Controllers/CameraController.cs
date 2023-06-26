@@ -34,6 +34,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Animator _cameraAnimator;
 
+    [SerializeField]
+    private float _musicFadeInOutSpeed;
+
     public bool EnableDownMovement { get; set; } = true;
 
     public event EventHandler<EventArgs> WentUpAfterStart;
@@ -74,11 +77,25 @@ public class CameraController : MonoBehaviour
         {
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
             _moveDown.Invoke();
+
+            MusicManager.Instance.StartFadeOut("GardenBody",_musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeOut("GardenMelody", _musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeIn("DungeonBody", _musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeIn("DungeonMelody", _musicFadeInOutSpeed);
+
+
             LeanTween.moveLocal(_camObject,_camPositionDown, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Bottom); 
         }
         else if(GlobalVariables.Instance.ScreenState == ScreenType.Bottom)
         {
             _moveUp.Invoke();
+
+            MusicManager.Instance.StartFadeIn("GardenBody", _musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeIn("GardenMelody", _musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeOut("DungeonBody", _musicFadeInOutSpeed);
+            MusicManager.Instance.StartFadeOut("DungeonMelody", _musicFadeInOutSpeed);
+
+
             GlobalVariables.Instance.ScreenState = ScreenType.Transition;
             LeanTween.moveLocal(_camObject, _camPositionUp, _movementTime).setEase(LeanTweenType.easeInOutCubic).setOnComplete(() => GlobalVariables.Instance.ScreenState = ScreenType.Top); 
         }

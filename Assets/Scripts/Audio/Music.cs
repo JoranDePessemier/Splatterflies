@@ -23,14 +23,9 @@ public class Music
     public float Volume => _volume;
 
     [SerializeField]
-    private float _endTimeSeconds;
-
-    [SerializeField]
     private bool _looping;
 
     public bool Looping => _looping;
-
-    public float EndTimeSeconds => _endTimeSeconds;
 
     public AudioSource source { get; set; }
 

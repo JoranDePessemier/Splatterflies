@@ -258,6 +258,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19419787}
   m_CullTransparentMesh: 1
+--- !u!1 &24912292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24912294}
+  - component: {fileID: 24912293}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &24912293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24912292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4938457d0094c04e870bac3c09731c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicInGame:
+  - _name: Neutral
+    _clip: {fileID: 8300000, guid: f49277cb02c8fe646afb61a5c6f7ff9a, type: 3}
+    _volume: 0.35
+    _looping: 1
+  - _name: GardenBody
+    _clip: {fileID: 8300000, guid: 81afc46f2d3f02e4d869db8b7926c0a7, type: 3}
+    _volume: 0.35
+    _looping: 1
+  - _name: GardenMelody
+    _clip: {fileID: 8300000, guid: 6971e0812caa3924ca57f52e317942f3, type: 3}
+    _volume: 0.35
+    _looping: 1
+  - _name: DungeonBody
+    _clip: {fileID: 8300000, guid: d3f24e4a273f57244aa6e4d0032abffb, type: 3}
+    _volume: 0.35
+    _looping: 1
+  - _name: DungeonMelody
+    _clip: {fileID: 8300000, guid: 4039c7e0daf59194ba2f50a64e0539e9, type: 3}
+    _volume: 0.35
+    _looping: 1
+--- !u!4 &24912294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24912292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &57918430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3614,6 +3679,7 @@ MonoBehaviour:
       m_Calls: []
   _endlessGameScene: EndlessScene
   _storyGameScene: StoryScene
+  _musicFadeSpeed: 0.3
 --- !u!114 &2081490702
 MonoBehaviour:
   m_ObjectHideFlags: 0
