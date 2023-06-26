@@ -79,7 +79,7 @@ public class MainOrderController : MonoBehaviour
 
             MusicManager.Instance.StopAllMusic();
 
-            if(!GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.HighScore < GlobalVariables.Instance.CompletedOrders)
+            if(GlobalVariables.Instance.EndlessMode && GlobalVariables.Instance.HighScore < GlobalVariables.Instance.CompletedOrders)
             {
                 GlobalVariables.Instance.HighScore = GlobalVariables.Instance.CompletedOrders;
             }

@@ -98,6 +98,11 @@ public class MainMenuManager : MonoBehaviour
         MusicManager.Instance.StartFadeIn("Neutral", _musicFadeSpeed);
     }
 
+    public void GoToLink(string link)
+    {
+        Application.OpenURL(link);
+    }
+
     private void GoToGameScene(bool isEndless)
     {
         GlobalVariables.Instance.ScreenState = ScreenType.Transition;
