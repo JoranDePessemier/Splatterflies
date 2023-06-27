@@ -29,6 +29,11 @@ public class TutorialController : MonoBehaviour
         GlobalVariables.Instance.TimerStarted = false;
     }
 
+    private void OnDisable()
+    {
+        _camController.WentUpAfterStart -= FirstTextAppear;
+    }
+
     private void FirstTextAppear(object sender, EventArgs e)
     {
         _startingText.Appear();

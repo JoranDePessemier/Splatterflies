@@ -53,7 +53,16 @@ public class BaseButterflyDungeon : MonoBehaviour, IPointerDownHandler, IPointer
         _mainCam = Camera.main;
 
         _controls = new Controls();
+
+    }
+    private void OnEnable()
+    {
         _controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controls.Disable();
     }
 
     private void OnDrawGizmosSelected()
