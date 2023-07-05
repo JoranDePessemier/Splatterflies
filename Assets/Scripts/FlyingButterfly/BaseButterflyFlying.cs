@@ -49,9 +49,13 @@ public class BaseButterflyFlying : MonoBehaviour
 
     public void Caught(Vector2 movementPosition, float movementSpeed)
     {
-        StartCoroutine(Utilities.MoveToPoint(movementPosition, () => Destroy(this.gameObject), _body, movementSpeed));
-        _isCaught = true;
-        OnWasCaught(new WasCaughtEventArgs(Type));
+        if(!_isCaught)
+        {
+            StartCoroutine(Utilities.MoveToPoint(movementPosition, () => Destroy(this.gameObject), _body, movementSpeed));
+            _isCaught = true;
+            OnWasCaught(new WasCaughtEventArgs(Type));
+        }
+
     }
 
     public void Left()

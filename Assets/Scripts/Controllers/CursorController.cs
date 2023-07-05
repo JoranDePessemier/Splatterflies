@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -18,11 +19,23 @@ public class CursorController : MonoBehaviour
     {
         _transform = this.transform;
         _controls = new Controls();
-        _controls.Enable();
+
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
 
+
+    }
+
+    private void OnEnable()
+    {
+        _controls.Enable();
         _controls.PlayerInput.ActionPressed.performed += CursorClicked;
+    }
+
+    private void OnDisable()
+    {
+        _controls.Disable();
+        _controls.PlayerInput.ActionPressed.performed -= CursorClicked;
     }
 
     private void CursorClicked(InputAction.CallbackContext obj)

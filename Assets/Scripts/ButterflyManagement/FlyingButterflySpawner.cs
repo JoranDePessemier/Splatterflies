@@ -18,8 +18,6 @@ public class FlyingButterflySpawner : MonoBehaviour
     [SerializeField]
     private float _amountPerButterfly = 3;
 
-    private List<int> _amountPerSpawnObject = new List<int>();
-
     private int _currentButterflySpawnAmount; 
 
     DungeonButterflySpawner _dungeonSpawner;
@@ -29,10 +27,6 @@ public class FlyingButterflySpawner : MonoBehaviour
     private List<ButterflyType> _spawnTypes = new List<ButterflyType>();
     private void Awake()
     {
-        foreach(BaseButterflyFlying b in _spawnObjects)
-        {
-            _amountPerSpawnObject.Add(0);
-        }
         _dungeonSpawner = this.GetComponent<DungeonButterflySpawner>();
         _mainOrderController = this.GetComponent<MainOrderController>();
         _mainOrderController.ModifyDifficulty += ModifySpawningButterflies;
@@ -59,22 +53,15 @@ public class FlyingButterflySpawner : MonoBehaviour
     {
         int spawnIndex = _spawnTypes.IndexOf(type);
 
-        if (_amountPerSpawnObject[spawnIndex] >= _amountPerButterfly)
-        {
-            return;
-        }
 
         Transform flyTransform = _spawnObjects[spawnIndex].transform;
 
-        _amountPerSpawnObject[spawnIndex]++;
 
         Vector2 spawnPoint = DetermineSpawnPoint();
 
         BaseButterflyFlying spawnedFly = GameObject.Instantiate(flyTransform, spawnPoint, flyTransform.rotation).GetComponent<BaseButterflyFlying>();
-        spawnedFly.LeftScene += (s, e) => { _amountPerSpawnObject[spawnIndex]--; SpawnButterfly(e.Type); };
+        spawnedFly.LeftScene += (s, e) => { SpawnButterfly(e.Type); };
         spawnedFly.WasCaught += _dungeonSpawner.SpawnButterfly;
-
-        spawnedFly.WasCaught += (s,e) => _amountPerSpawnObject[spawnIndex]--;
     }
 
     private Vector2 DetermineSpawnPoint()

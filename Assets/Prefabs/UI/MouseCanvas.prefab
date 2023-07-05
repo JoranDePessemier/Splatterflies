@@ -109,7 +109,7 @@ RectTransform:
   m_Children:
   - {fileID: 980726762056426626}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -189,7 +189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 980726762056426626}
   - component: {fileID: 8651251167339367137}
-  - component: {fileID: 8491038953944161662}
   m_Layer: 5
   m_Name: MouseCursor
   m_TagString: Untagged
@@ -233,23 +232,3 @@ MonoBehaviour:
   _clicked:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8491038953944161662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7587566235713668073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e01c2f8df1d45f488fd2236b1bed367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundsToAdd:
-  - _name: Click
-    _clip: {fileID: 8300000, guid: adda5b8468d0e7844979a7d5f91418a6, type: 3}
-    _volume: 1
-    _looping: 0
-    _pitchVariation: {x: 0.07, y: 1.3}
-    _is3dSound: 0
-    _maxDistance: 0
